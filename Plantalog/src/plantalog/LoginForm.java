@@ -91,10 +91,16 @@ public class LoginForm extends javax.swing.JDialog {
     }//GEN-LAST:event_usernameTextInputActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        
+        DBC.connect(
+                this.usernameTextInput.getText(), 
+                this.passwordTextInput.getText()
+        );
         boolean success = DBC.login(
                 this.usernameTextInput.getText(), 
                 this.passwordTextInput.getText()
         );
+        
         if(success){
             this.dispose();
             Plantalog.loadApplication();

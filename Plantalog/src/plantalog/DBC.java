@@ -10,7 +10,6 @@ import java.sql.*;
  */
 public class DBC {
     
-    
     static Connection conn = null;
     static Statement stmt = null;
     static ResultSet rs = null;
@@ -20,7 +19,7 @@ public class DBC {
      * 
      * Sets up connection and statement
      */
-    public static void connect(){
+    public static void connect(String username, String password){
         
         String jdbcDriver = "oracle.jdbc.driver.OracleDriver";
         String jdbcUrl = "jdbc:oracle:thin:@//csshrpt.eku.edu:1521/cscdb";  
@@ -28,13 +27,10 @@ public class DBC {
         //(oracle), the driver (thin), the server (csshrpt.eku.edu), and 
         //the port number (1521)
 
-        String user = "";
-        String passwd = "";
-
         try{
             Class.forName(jdbcDriver);
             //persist the connection throughout the application
-            conn = DriverManager.getConnection(jdbcUrl, user, passwd);
+            conn = DriverManager.getConnection(jdbcUrl, username, password);
 
             // Create a statement object that will send SQL statements to DBMS
             stmt = conn.createStatement();
@@ -142,10 +138,9 @@ public class DBC {
      * 
      * Note: Method from class example
      * 
-     * @param stmt Statement object on which to execute the queries
      * @param tableName Name of the table to drop
      */
-    static void dropTable(Statement stmt, String tableName)
+    static void dropTable(String tableName)
     {       
         ResultSet result = null;
 
