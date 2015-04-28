@@ -1,22 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package plantalog;
 
 import java.util.ArrayList;
 
 /**
- *
- * @author Simon
+ * Handles all user interactions for the business activities
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainFrame
-     */
     public MainFrame() {
         initComponents();
     }
@@ -138,7 +129,15 @@ public class MainFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_resultOnClick
 
+    /**
+     * Load data for a specimen in the main frame
+     * 
+     * @param specimenID 
+     */
     private void loadData(String specimenID){
+        // record view from user
+        // get data for user
+        // display data
         this.specimenName.setText(specimenID);
     }
     public static void start() {
