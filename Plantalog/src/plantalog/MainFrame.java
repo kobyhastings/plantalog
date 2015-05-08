@@ -26,6 +26,7 @@ public class MainFrame extends javax.swing.JFrame {
         searchButton = new javax.swing.JButton();
         searchResultsPane = new javax.swing.JScrollPane();
         searchResults = new javax.swing.JList();
+        jLabel1 = new javax.swing.JLabel();
         mainPanel = new javax.swing.JPanel();
         specimenName = new javax.swing.JLabel();
 
@@ -53,29 +54,34 @@ public class MainFrame extends javax.swing.JFrame {
         });
         searchResultsPane.setViewportView(searchResults);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
+
         javax.swing.GroupLayout leftSidePanelLayout = new javax.swing.GroupLayout(leftSidePanel);
         leftSidePanel.setLayout(leftSidePanelLayout);
         leftSidePanelLayout.setHorizontalGroup(
             leftSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftSidePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(leftSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(searchResultsPane)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, leftSidePanelLayout.createSequentialGroup()
+                .addGroup(leftSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(searchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(leftSidePanelLayout.createSequentialGroup()
                         .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchButton)))
+                        .addComponent(searchButton))
+                    .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         leftSidePanelLayout.setVerticalGroup(
             leftSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftSidePanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(leftSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchButton))
-                .addGap(29, 29, 29)
-                .addComponent(searchResultsPane, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(searchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -181,6 +187,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel leftSidePanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JButton searchButton;
