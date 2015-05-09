@@ -10,7 +10,7 @@ package plantalog.models;
  *
  * @author Simon
  */
-public class SpecimenRegion {
+public class SpecimenRegion extends Model {
     public String region_name;
     public String description;
 }

@@ -10,11 +10,6 @@ package plantalog.models;
  *
  * @author Simon
  */
-public class Users extends Model {
-    public String user_id;
-    public String name;
-    public String password;
-    public String email;
-    public String user_since;
-    public char user_type;
+public class Model {
+    
 }

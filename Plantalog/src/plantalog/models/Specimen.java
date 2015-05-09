@@ -10,7 +10,7 @@ package plantalog.models;
  *
  * @author Simon
  */
-public class Specimen {
+public class Specimen extends Model {
     public String plant_id;
     public String specimen_id;
     public String notes;

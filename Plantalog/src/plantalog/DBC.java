@@ -69,15 +69,15 @@ public class DBC {
         }
     }
     
-    public static ArrayList<String> search(String query){
+    public static ArrayList<Plant> search(String query){
         // query db for stuff, return results
         String[] strings = {"hi", "people", query};
-        ArrayList<String> results = getAllPlants();
+        ArrayList<Plant> results = getAllPlants();
         return results;
     }
     
-    public static ArrayList<String> getAllPlants(){
-        ArrayList<String> plants = new ArrayList();
+    public static ArrayList<Plant> getAllPlants(){
+        ArrayList<Plant> plants = new ArrayList();
         try
         {
             Plant p;
@@ -90,7 +90,7 @@ public class DBC {
                 p.sci_name = r.getString("sci_name");
                 p.com_name = r.getString("com_name");
                 p.notes = r.getString("notes");
-                plants.add(p.toString());
+                plants.add(p);
             }
         }catch(Throwable oops)
         {
