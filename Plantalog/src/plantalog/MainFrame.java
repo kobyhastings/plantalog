@@ -3,13 +3,12 @@ package plantalog;
 
 import java.awt.CardLayout;
 import java.awt.Image;
-import java.io.IOException;
-import java.net.URL;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import org.imgscalr.Scalr;
 import plantalog.models.Plant;
 import plantalog.models.PlantImage;
 import plantalog.models.Specimen;
@@ -57,6 +56,8 @@ public class MainFrame extends javax.swing.JFrame {
         specimenNotes = new javax.swing.JLabel();
         plantNotes = new javax.swing.JLabel();
         mainImage = new javax.swing.JLabel();
+        ImageListScrollPane = new javax.swing.JScrollPane();
+        imagesList = new javax.swing.JList();
         header = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         greeting = new javax.swing.JLabel();
@@ -247,11 +248,20 @@ public class MainFrame extends javax.swing.JFrame {
         specimenName.setToolTipText("");
 
         mainImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        mainImage.setText("loading...");
         mainImage.setToolTipText("");
         mainImage.setAlignmentX(0.5F);
         mainImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         mainImage.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        mainImage.setIconTextGap(0);
+
+        imagesList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        imagesList.setToolTipText("");
+        imagesList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imagesListresultOnClick(evt);
+            }
+        });
+        ImageListScrollPane.setViewportView(imagesList);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -260,29 +270,32 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(specimenNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plantNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(specimenName, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(specimenNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mainImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(plantNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(specimenName, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-                        .addComponent(mainImage, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(61, 61, 61))
+                        .addComponent(ImageListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 178, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addComponent(specimenName, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(plantNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addComponent(mainImage, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)))
+                .addGap(24, 24, 24)
+                .addComponent(specimenName, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(plantNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(specimenNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(0, 11, Short.MAX_VALUE)
+                .addComponent(mainImage, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ImageListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -434,6 +447,14 @@ public class MainFrame extends javax.swing.JFrame {
         setCard("login");
     }//GEN-LAST:event_logoutButtonActionPerformed
 
+    private void imagesListresultOnClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagesListresultOnClick
+        PlantImage p = (PlantImage)this.imagesList.getSelectedValue();
+        if(p != null)
+            loadImage(mainImage, p);
+        else
+            System.out.println("failed to find image selected");
+    }//GEN-LAST:event_imagesListresultOnClick
+
     /**
      * Load data for a specimen in the main frame
      * 
@@ -443,22 +464,31 @@ public class MainFrame extends javax.swing.JFrame {
         this.specimenName.setText(s.plant + " " + s.lives_in);
         this.specimenNotes.setText(s.notes);
         this.plantNotes.setText(s.plant.notes);
-        loadImage(mainImage, "http://upload.wikimedia.org/wikipedia/commons/b/b6/Tea_plants.jpg");
-        for(PlantImage i : s.plant.images){
-            System.out.println(i);
+        if(s.plant.images.size() > 0)
+            loadImage(mainImage, s.plant.images.get(0));
+        else{
+            mainImage.setIcon(null);
+            mainImage.setText("No images available");
+            
         }
+        this.imagesList.setModel(toListModel(s.plant.images));
     }
     
-    private void loadImage(JLabel label, String url){
+    private void loadImage(JLabel label, PlantImage pi){
         
+        label.setText("Loading...");
+        label.setIcon(null);
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                try{
-                    Image i = ImageIO.read(new URL(url));
-                    Image bi = i.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+                BufferedImage i = (BufferedImage)pi.getImage();
+                if(i != null){
+                    label.setText("");
+                    BufferedImage bi = Scalr.resize(i, Scalr.Method.SPEED, Scalr.Mode.FIT_TO_WIDTH,
+                            label.getWidth()-4, label.getHeight()-4, Scalr.OP_ANTIALIAS);
                     label.setIcon(new ImageIcon(bi));
-                }catch(IOException e){
+                }else{
+                    label.setText("Error Loading Image: Invalid URL");
                 }
             }
         });
@@ -528,9 +558,11 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane ImageListScrollPane;
     private javax.swing.JPanel cards;
     private javax.swing.JLabel greeting;
     private javax.swing.JPanel header;
+    private javax.swing.JList imagesList;
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JLabel logo;

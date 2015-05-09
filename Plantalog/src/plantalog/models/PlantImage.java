@@ -6,8 +6,12 @@
 
 package plantalog.models;
 
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -19,6 +23,8 @@ public class PlantImage extends Model
     public String image_id;
     public String path;
     public String caption;
+    
+    public Image image;
 
     @Override
     public void fromResultSet(ResultSet r) {
@@ -36,5 +42,14 @@ public class PlantImage extends Model
     @Override
     public String toString(){
         return path;
+    }
+    
+    public Image getImage(){
+        if(image == null)
+            try{
+                image = ImageIO.read(new URL(this.path));
+            }catch(IOException e){
+            }
+        return image;
     }
 }
