@@ -3,10 +3,7 @@ package plantalog;
 import java.sql.*;
 import java.util.ArrayList;
 import plantalog.models.Model;
-import plantalog.models.Plant;
-import plantalog.models.PlantImage;
 import plantalog.models.Specimen;
-import plantalog.models.SpecimenRegion;
 import plantalog.models.User;
 
 /**
