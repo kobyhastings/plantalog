@@ -3,6 +3,7 @@ package plantalog;
 import java.sql.*;
 import java.util.ArrayList;
 import plantalog.models.Plant;
+import plantalog.models.User;
 
 /**
  * Database Connection Class
@@ -21,7 +22,7 @@ public class DBC {
      * 
      * Sets up connection and statement
      */
-    public static void connect(String username, String password){
+    public static void connect(){
         
         String jdbcDriver = "com.mysql.jdbc.Driver";  //"oracle.jdbc.driver.OracleDriver";
         String jdbcUrl = "jdbc:mysql://localhost/Plantalog?username=plantalog&password=plantalogpw";  //"jdbc:oracle:thin:@//csshrpt.eku.edu:1521/cscdb";
@@ -37,7 +38,7 @@ public class DBC {
             // Create a statement object that will send SQL statements to DBMS
             stmt = conn.createStatement();
         }
-        catch(Throwable oops)
+        catch(ClassNotFoundException | SQLException oops)
         {
             oops.printStackTrace();
             disconnect();
@@ -54,18 +55,24 @@ public class DBC {
             close(conn);        
     }
     
-    public static boolean login(String username, String password){
+    public static User login(String username, String password){
         try
         {
-            //login to database
-            return true; // if successful
-            //return false if not
-
-        }catch(Throwable oops)
+            ResultSet r = stmt.executeQuery(
+                "Select * from Users where name=\""+
+                username+"\" and password=\""+password+"\";");
+            if(r.next()){
+                User u = new User();
+                u.fromResultSet(r);
+                return u;
+            }else{
+                return null;
+            }
+        }catch(SQLException oops)
         {
             oops.printStackTrace();
             disconnect();
-            return false;
+            return null;
         }
     }
     
@@ -81,7 +88,7 @@ public class DBC {
         try
         {
             Plant p;
-            ResultSet r = stmt.executeQuery("Select * from Plant");
+            ResultSet r = stmt.executeQuery("Select * from Plant;");
             while(!r.isLast()){
                 p = new Plant();
                 r.next();
@@ -92,7 +99,7 @@ public class DBC {
                 p.notes = r.getString("notes");
                 plants.add(p);
             }
-        }catch(Throwable oops)
+        }catch(SQLException oops)
         {
             oops.printStackTrace();
             disconnect();
@@ -111,7 +118,7 @@ public class DBC {
             p.sci_name = r.getString("sci_name");
             p.com_name = r.getString("com_name");
             p.notes = r.getString("notes");
-        }catch(Throwable oops)
+        }catch(SQLException oops)
         {
             oops.printStackTrace();
             disconnect();

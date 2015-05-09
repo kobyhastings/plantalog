@@ -6,10 +6,12 @@
 
 package plantalog.models;
 
+import java.sql.ResultSet;
+
 /**
  *
  * @author Simon
  */
-public class Model {
-    
+public abstract class Model {
+    public abstract void fromResultSet(ResultSet r);
 }

@@ -1,8 +1,10 @@
 
 package plantalog;
 
+import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import plantalog.models.Plant;
 
 /**
@@ -23,17 +25,126 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        loginPanel = new javax.swing.JPanel();
+        usernameLabel = new javax.swing.JLabel();
+        passwordLabel = new javax.swing.JLabel();
+        usernameField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
+        loginButton = new javax.swing.JButton();
+        logo1 = new javax.swing.JLabel();
+        searchPanel = new javax.swing.JPanel();
+        mainPanel = new javax.swing.JPanel();
+        detailsPanel = new javax.swing.JPanel();
+        specimenName = new javax.swing.JLabel();
         leftSidePanel = new javax.swing.JPanel();
         searchTextField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
         searchResultsPane = new javax.swing.JScrollPane();
         searchResults = new javax.swing.JList();
-        jLabel1 = new javax.swing.JLabel();
-        mainPanel = new javax.swing.JPanel();
-        specimenName = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 153));
+        getContentPane().setLayout(new java.awt.CardLayout());
+
+        usernameLabel.setText("Username");
+
+        passwordLabel.setText("Password");
+
+        usernameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameFieldActionPerformed(evt);
+            }
+        });
+
+        passwordField.setToolTipText("");
+
+        loginButton.setText("Login");
+        loginButton.setToolTipText("");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+
+        logo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
+
+        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
+        loginPanel.setLayout(loginPanelLayout);
+        loginPanelLayout.setHorizontalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(logo1))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(loginPanelLayout.createSequentialGroup()
+                                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+                                        .addComponent(passwordLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                    .addGroup(loginPanelLayout.createSequentialGroup()
+                                        .addComponent(usernameLabel)
+                                        .addGap(8, 8, 8)))
+                                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(usernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                                    .addComponent(passwordField))))))
+                .addContainerGap(247, Short.MAX_VALUE))
+        );
+        loginPanelLayout.setVerticalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(logo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(112, 112, 112)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usernameLabel)
+                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordLabel)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(loginButton)
+                .addGap(209, 209, 209))
+        );
+
+        getContentPane().add(loginPanel, "card3");
+
+        javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
+        searchPanel.setLayout(searchPanelLayout);
+        searchPanelLayout.setHorizontalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 624, Short.MAX_VALUE)
+        );
+        searchPanelLayout.setVerticalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 504, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(searchPanel, "card3");
+
+        specimenName.setText("Select a Specimen");
+        specimenName.setToolTipText("");
+
+        javax.swing.GroupLayout detailsPanelLayout = new javax.swing.GroupLayout(detailsPanel);
+        detailsPanel.setLayout(detailsPanelLayout);
+        detailsPanelLayout.setHorizontalGroup(
+            detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detailsPanelLayout.createSequentialGroup()
+                .addContainerGap(53, Short.MAX_VALUE)
+                .addComponent(specimenName, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        detailsPanelLayout.setVerticalGroup(
+            detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detailsPanelLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(specimenName)
+                .addContainerGap(409, Short.MAX_VALUE))
+        );
 
         searchButton.setText("Search");
         searchButton.setToolTipText("");
@@ -52,7 +163,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         searchResultsPane.setViewportView(searchResults);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout leftSidePanelLayout = new javax.swing.GroupLayout(leftSidePanel);
         leftSidePanel.setLayout(leftSidePanelLayout);
@@ -62,61 +173,55 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(leftSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(searchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logo)
                     .addGroup(leftSidePanelLayout.createSequentialGroup()
                         .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchButton))
-                    .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         leftSidePanelLayout.setVerticalGroup(
             leftSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftSidePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(leftSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchButton))
-                .addGap(18, 18, 18)
-                .addComponent(searchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
-        specimenName.setText("Select a Specimen");
-        specimenName.setToolTipText("");
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(specimenName, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                .addContainerGap(258, Short.MAX_VALUE)
+                .addComponent(detailsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(leftSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(376, Short.MAX_VALUE)))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(specimenName)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(detailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(33, 33, 33))
+            .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mainPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(leftSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(13, Short.MAX_VALUE)))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(leftSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(leftSidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(mainPanel, "card4");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -137,6 +242,18 @@ public class MainFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_resultOnClick
 
+    private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameFieldActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        String username = usernameField.getText();
+        String password = String.valueOf(passwordField.getPassword());
+        Plantalog.currentUser = DBC.login(username, password);
+        if(Plantalog.currentUser != null)
+            setCard("card4");
+    }//GEN-LAST:event_loginButtonActionPerformed
+
     /**
      * Load data for a specimen in the main frame
      * 
@@ -147,6 +264,10 @@ public class MainFrame extends javax.swing.JFrame {
         // get data for user
         // display data
         this.specimenName.setText(p.sci_name + " '" + p.cultivar + "' (" + p.com_name + ")");
+    }
+    
+    private void setCard(String cardname){
+        ((CardLayout)getContentPane().getLayout()).show(getContentPane(), cardname);        
     }
     public static void start() {
         /* Set the Nimbus look and feel */
@@ -189,13 +310,22 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel detailsPanel;
     private javax.swing.JPanel leftSidePanel;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JPanel loginPanel;
+    private javax.swing.JLabel logo;
+    private javax.swing.JLabel logo1;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JLabel passwordLabel;
     private javax.swing.JButton searchButton;
+    private javax.swing.JPanel searchPanel;
     private javax.swing.JList searchResults;
     private javax.swing.JScrollPane searchResultsPane;
     private javax.swing.JTextField searchTextField;
     private javax.swing.JLabel specimenName;
+    private javax.swing.JTextField usernameField;
+    private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 }

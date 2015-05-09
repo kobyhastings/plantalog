@@ -6,6 +6,8 @@
 
 package plantalog.models;
 
+import java.sql.ResultSet;
+
 /**
  *
  * @author Simon
@@ -13,4 +15,9 @@ package plantalog.models;
 public class SpecimenRegion extends Model {
     public String region_name;
     public String description;
+
+    @Override
+    public void fromResultSet(ResultSet r) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

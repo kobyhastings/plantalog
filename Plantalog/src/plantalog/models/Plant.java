@@ -6,6 +6,8 @@
 
 package plantalog.models;
 
+import java.sql.ResultSet;
+
 /**
  *
  * @author Simon
@@ -21,4 +23,9 @@ public class Plant extends Model {
     public String toString(){
         return "Plant(" + plant_id + ", " + sci_name + ", " + cultivar + ")";
     }    
+
+    @Override
+    public void fromResultSet(ResultSet r) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

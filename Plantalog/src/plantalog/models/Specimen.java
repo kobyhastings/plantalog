@@ -6,6 +6,8 @@
 
 package plantalog.models;
 
+import java.sql.ResultSet;
+
 /**
  *
  * @author Simon
@@ -18,4 +20,9 @@ public class Specimen extends Model {
     public double longitude;
     public String when_added;
     public String lives_in;
+
+    @Override
+    public void fromResultSet(ResultSet r) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
