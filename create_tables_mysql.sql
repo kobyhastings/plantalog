@@ -20,7 +20,7 @@ create table Users (
 );
 
 create table Views (
-	date_time timestamp,
+	date_time timestamp DEFAULT CURRENT_TIMESTAMP,
 	user_id char(9),
 	specimen_id char(9),
 	primary key(date_time, user_id, specimen_id)

@@ -479,6 +479,7 @@ public class MainFrame extends javax.swing.JFrame {
             
         }
         this.imagesList.setModel(toListModel(s.plant.images));
+        DBC.view(s, Plantalog.currentUser);
     }
     
     private void loadImage(JLabel label, PlantImage pi){

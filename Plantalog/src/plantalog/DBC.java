@@ -205,6 +205,17 @@ public class DBC {
         return p;
     }
     
+    public static void view(Specimen s, User u){
+        try{
+            stmt.execute("insert into Views (user_id, specimen_id) values('"+u.user_id +"', '"+s.specimen_id+"');");
+        }catch(SQLException oops)
+        {
+            oops.printStackTrace();
+            disconnect();
+        }
+        
+    }
+    
     /**
      * Closes a database connection
      * 
