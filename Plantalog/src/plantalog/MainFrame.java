@@ -58,6 +58,7 @@ public class MainFrame extends javax.swing.JFrame {
         mainImage = new javax.swing.JLabel();
         ImageListScrollPane = new javax.swing.JScrollPane();
         imagesList = new javax.swing.JList();
+        mainImageCaption = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         greeting = new javax.swing.JLabel();
@@ -263,6 +264,9 @@ public class MainFrame extends javax.swing.JFrame {
         });
         ImageListScrollPane.setViewportView(imagesList);
 
+        mainImageCaption.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        mainImageCaption.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -278,7 +282,8 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(mainImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(ImageListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 178, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(mainImageCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
@@ -295,7 +300,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 11, Short.MAX_VALUE)
                 .addComponent(mainImage, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(ImageListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ImageListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                    .addComponent(mainImageCaption, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -477,6 +484,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void loadImage(JLabel label, PlantImage pi){
         
         label.setText("Loading...");
+        mainImageCaption.setText(pi.caption);
         label.setIcon(null);
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
@@ -568,6 +576,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel logo;
     private javax.swing.JButton logoutButton;
     private javax.swing.JLabel mainImage;
+    private javax.swing.JLabel mainImageCaption;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
