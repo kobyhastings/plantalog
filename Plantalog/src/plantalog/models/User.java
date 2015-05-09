@@ -9,12 +9,17 @@ package plantalog.models;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import plantalog.DBC;
 
 /**
  *
  * @author Simon
  */
-public class User extends Model {
+public class User extends Model{
+    
+    static ArrayList<User> cache = new ArrayList();
+    
     public String user_id;
     public String name;
     public String password;
@@ -23,17 +28,52 @@ public class User extends Model {
     public char user_type;
 
     @Override
-    public void fromResultSet(ResultSet r) {
+    public ArrayList<User> parseResultSet(ResultSet r) {
+        ArrayList<User> results = new ArrayList();
         try{
-        this.email = r.getString("email");
-        this.name = r.getString("name");
-        this.user_id = r.getString("user_id");
-        this.user_since = r.getDate("user_since");
-        this.user_type = r.getString("user_type").charAt(0);
-        
+            while(r.next()){
+                User m = get_from_cache(r.getString("user_id"));
+                if(m == null){
+                    m = new User();
+                    cache.add(m);
+                }
+                m.email = r.getString("email");
+                m.name = r.getString("name");
+                m.user_id = r.getString("user_id");
+                m.user_since = r.getDate("user_since");
+                m.user_type = r.getString("user_type").charAt(0);
+                results.add(m);
+            }
         }catch(SQLException oops)
         {
             oops.printStackTrace();
         }
+        return results;
+    }
+    
+    public boolean isEmployee(){
+        return user_type == 'E';
+    }
+    
+    public static User get(String id) {
+        ArrayList<User> users = DBC.executeQuery("Select * from User where user_id=\""+id+"\"", new User());
+        if(users.size() > 0){
+            User u = users.get(0);
+            return u;
+        }
+        return null;
+    }
+    public static User get_from_cache(String id){
+        User m = null; //check cache
+        for(User x : cache){
+            if (((User)x).user_id.equals(id)){
+                m = (User)x;
+                break;
+            }
+        }
+        return m;
+    }
+    public static ArrayList<User> getAll(){
+        return DBC.executeQuery("Select * from User;", new User());
     }
 }

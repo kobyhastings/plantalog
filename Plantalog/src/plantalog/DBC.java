@@ -2,6 +2,7 @@
 package plantalog;
 import java.sql.*;
 import java.util.ArrayList;
+import plantalog.models.Model;
 import plantalog.models.Plant;
 import plantalog.models.PlantImage;
 import plantalog.models.Specimen;
@@ -48,6 +49,35 @@ public class DBC {
         }
     }
     
+    public static void execute(String query){
+        Statement s = null;
+        try {
+            s = conn.createStatement();
+            s.execute(query);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }finally{
+            if(s != null)
+                close(s);
+        }
+    }
+    public static <T extends Model> ArrayList<T> executeQuery(String query, T modelclass){
+        //System.out.println("executing "+ query);
+        Statement s = null;
+        try {
+            s = conn.createStatement();
+            ResultSet r = s.executeQuery(query);
+            return modelclass.parseResultSet(r);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }finally{
+            if(s != null)
+                close(s);
+        }
+        System.out.println("err");
+        return new ArrayList();
+    }
+    
     /**
      * Destroys the connection to the database
      * Call on exit
@@ -59,161 +89,15 @@ public class DBC {
     }
     
     public static User login(String username, String password){
-        try
-        {
-            ResultSet r = stmt.executeQuery(
+        ArrayList<User> users = executeQuery(
                 "Select * from Users where name=\""+
-                username+"\" and password=\""+password+"\";");
-            if(r.next()){
-                User u = new User();
-                u.fromResultSet(r);
-                return u;
-            }else{
-                return null;
-            }
-        }catch(SQLException oops)
-        {
-            oops.printStackTrace();
-            disconnect();
-            return null;
-        }
-    }
-    
-    public static ArrayList<SpecimenRegion> getRegions(String filter){
-        ArrayList<SpecimenRegion> regions = new ArrayList();
-        try
-        {
-            SpecimenRegion sr;
-            ResultSet r;
-            if(filter.isEmpty())
-                r = stmt.executeQuery("Select * from SpecimenRegion;");
-            else
-                r = stmt.executeQuery("Select * from SpecimenRegion where region_name LIKE '%"+filter+"%'");                
-            while(r.next()){
-                sr = new SpecimenRegion();
-                sr.fromResultSet(r);
-                regions.add(sr);
-            }
-        }catch(SQLException oops)
-        {
-            oops.printStackTrace();
-            disconnect();
-            return new ArrayList();
-        }
-        return regions;
-        
-    }
-    public static ArrayList<Plant> getPlants(String filter){
-        ArrayList<Plant> plants = new ArrayList();
-        try
-        {
-            Plant p;
-            ResultSet r;
-            if(filter.isEmpty())
-                r = stmt.executeQuery("Select * from Plant;");
-            else
-                r = stmt.executeQuery(
-                        "Select * from Plant where "+
-                        "sci_name LIKE '%"+filter+"%' or "+
-                        "cultivar LIKE '%"+filter+"%' or "+
-                        "com_name LIKE '%"+filter+"%'");
-            while(r.next()){
-                p = new Plant();
-                p.fromResultSet(r);
-                plants.add(p);
-            }
-        }catch(SQLException oops)
-        {
-            oops.printStackTrace();
-            disconnect();
-            return new ArrayList();
-        }
-        for(Plant p: plants)
-                p.images = getPlantImages(p.plant_id);
-        return plants;
-    }
-    
-    public static ArrayList<PlantImage> getPlantImages(String plant_id){
-        
-        ArrayList<PlantImage> images = new ArrayList();
-        try
-        {
-            PlantImage i;
-            ResultSet r = stmt.executeQuery(
-                "Select * from PlantImage where "+
-                "plant_id = '" + plant_id + "'");
-            while(r.next()){
-                i = new PlantImage();
-                i.fromResultSet(r);
-                images.add(i);
-            }
-        }catch(SQLException oops)
-        {
-            oops.printStackTrace();
-            disconnect();
-            return new ArrayList();
-        }
-        return images;
-    }
-    public static ArrayList<Specimen> getSpecimens(SpecimenRegion region, Plant plant){
-        ArrayList<Specimen> specimens = new ArrayList();
-        try
-        {
-            Specimen s;
-            ResultSet r;
-            if(region != null && plant != null)
-                r = stmt.executeQuery("Select * from Specimen where "+
-                        "lives_in='"+region.region_name+"' and "+
-                        "plant_id='"+plant.plant_id+"'");
-            else if(region != null)
-                r = stmt.executeQuery("Select * from Specimen where "+
-                        "lives_in='"+region.region_name+"'");
-            else if(plant != null)
-                r = stmt.executeQuery("Select * from Specimen where "+
-                        "plant_id='"+plant.plant_id+"'");
-            else
-                r = stmt.executeQuery("Select * from Specimen");
-            while(r.next()){
-                s = new Specimen();
-                s.fromResultSet(r);
-                specimens.add(s);
-            }
-        }catch(SQLException oops)
-        {
-            oops.printStackTrace();
-            disconnect();
-            return new ArrayList();
-        }
-        for(Specimen s : specimens)
-                s.plant = getPlant(s.plant_id);
-        return specimens;
-    }
-    public static Plant getPlant(String plant_id){
-        Plant p = new Plant();
-        try
-        {
-            ResultSet r = stmt.executeQuery("Select * from Plant where plant_id=\""+plant_id+"\"");
-            r.next();
-            p.fromResultSet(r);
-        }catch(SQLException oops)
-        {
-            oops.printStackTrace();
-            disconnect();
-            return null;
-        }
-        p.images = getPlantImages(p.plant_id);
-        return p;
-    }
-    
+                username+"\" and password=\""+password+"\";", new User());
+        if(users.size() > 0)
+            return users.get(0);
+        return null;
+    }    
     public static void view(Specimen s, User u){
-        try{
-            stmt.execute("insert into Views (user_id, specimen_id) values('"+u.user_id +"', '"+s.specimen_id+"');");
-        }catch(SQLException oops)
-        {
-            oops.printStackTrace();
-            disconnect();
-        }
-        
+        execute("insert into Views (user_id, specimen_id) values('"+u.user_id +"', '"+s.specimen_id+"');");
     }
     
     /**

@@ -11,32 +11,46 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
+import plantalog.DBC;
 
 /**
  *
  * @author Simon
  */
-public class PlantImage extends Model
-{
+public class PlantImage extends Model {
+    
+    static ArrayList<PlantImage> cache = new ArrayList();
     public String plant_id;
     public String image_id;
     public String path;
     public String caption;
     
     public Image image;
+    public Plant plant;
 
     @Override
-    public void fromResultSet(ResultSet r) {
+    public ArrayList<PlantImage> parseResultSet(ResultSet r) {
+        ArrayList<PlantImage> results = new ArrayList();
         try{
-            this.plant_id = r.getString("plant_id");
-            this.image_id = r.getString("image_id");
-            this.path = r.getString("path");
-            this.caption = r.getString("caption");
+            while(r.next()){
+                PlantImage m = get_from_cache(r.getString("image_id"));
+                if(m == null){
+                    m = new PlantImage();
+                    cache.add(m);
+                }
+                m.plant_id = r.getString("plant_id");
+                m.image_id = r.getString("image_id");
+                m.path = r.getString("path");
+                m.caption = r.getString("caption");
+                results.add(m);
+            }
         }catch(SQLException oops)
         {
             oops.printStackTrace();
         }
+        return results;
     }
     
     @Override
@@ -51,5 +65,30 @@ public class PlantImage extends Model
             }catch(IOException e){
             }
         return image;
+    }
+
+    public static Model get(String id) {
+        ArrayList<PlantImage> ps = DBC.executeQuery("Select * from PlantImage where image_id=\""+id+"\"", new PlantImage());
+        if(ps.size() > 0){
+            PlantImage i = ps.get(0);
+            ArrayList<Plant> plants = (DBC.executeQuery("Select * from Plant where plant_id=\""+i.plant_id+"\"", new Plant()));
+            if(ps.size() > 0)
+                i.plant = plants.get(0);
+            return i;
+        }
+        return null;
+    }
+    public static PlantImage get_from_cache(String id){
+        PlantImage m = null; //check cache
+        for(Model x : cache){
+            if (((PlantImage)x).image_id.equals(id)){
+                m = (PlantImage)x;
+                break;
+            }
+        }
+        return m;
+    }
+    public static ArrayList<PlantImage> getAll(){
+        return DBC.executeQuery("Select * from PlantImage;", new PlantImage());
     }
 }

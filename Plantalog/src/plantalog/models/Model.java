@@ -7,11 +7,12 @@
 package plantalog.models;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
  * @author Simon
  */
 public abstract class Model {
-    public abstract void fromResultSet(ResultSet r);
+    public abstract <T extends Model> ArrayList<T> parseResultSet(ResultSet r);
 }
