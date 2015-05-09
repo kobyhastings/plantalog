@@ -8,6 +8,7 @@ package plantalog.models;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Plant extends Model {
     public String cultivar;
     public String com_name;
     public String notes;
+    public ArrayList<PlantImage> images;
 
     @Override
     public String toString(){

@@ -11,6 +11,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import plantalog.models.Plant;
+import plantalog.models.PlantImage;
 import plantalog.models.Specimen;
 import plantalog.models.SpecimenRegion;
 
@@ -443,7 +444,9 @@ public class MainFrame extends javax.swing.JFrame {
         this.specimenNotes.setText(s.notes);
         this.plantNotes.setText(s.plant.notes);
         loadImage(mainImage, "http://upload.wikimedia.org/wikipedia/commons/b/b6/Tea_plants.jpg");
-        
+        for(PlantImage i : s.plant.images){
+            System.out.println(i);
+        }
     }
     
     private void loadImage(JLabel label, String url){

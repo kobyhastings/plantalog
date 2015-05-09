@@ -23,3 +23,7 @@ insert into Specimen values("1","1","Planted for shade.", 0,0,"2015-05-02 08:00:
 insert into Specimen values("4","2","Planted for color.", 0,0,"2015-05-02 08:00:00", "forest");
 insert into Specimen values("4","3","From people down the road.", 0,0,"2015-05-02 08:00:00", "forest");
 insert into Specimen values("3","4","Planted for shade.", 0,0,"2015-05-02 08:00:00", "forest");
+
+/*plant image*/
+insert into PlantImage values ("1", "1","http://en.wikipedia.org/wiki/Magnolia#/media/File:Magn%C3%B2lia_a_Verbania.JPG", "This is a magnolia flower");
+insert into PlantImage values ("1", "2", "http://en.wikipedia.org/wiki/Magnolia#/media/File:Magnolia_Fruit_(South_America).JPG", "This is a magnolia seed cone");

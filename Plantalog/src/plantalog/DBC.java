@@ -3,6 +3,7 @@ package plantalog;
 import java.sql.*;
 import java.util.ArrayList;
 import plantalog.models.Plant;
+import plantalog.models.PlantImage;
 import plantalog.models.Specimen;
 import plantalog.models.SpecimenRegion;
 import plantalog.models.User;
@@ -127,7 +128,32 @@ public class DBC {
             disconnect();
             return new ArrayList();
         }
+        for(Plant p: plants)
+                p.images = getPlantImages(p.plant_id);
         return plants;
+    }
+    
+    public static ArrayList<PlantImage> getPlantImages(String plant_id){
+        
+        ArrayList<PlantImage> images = new ArrayList();
+        try
+        {
+            PlantImage i;
+            ResultSet r = stmt.executeQuery(
+                "Select * from PlantImage where "+
+                "plant_id = '" + plant_id + "'");
+            while(r.next()){
+                i = new PlantImage();
+                i.fromResultSet(r);
+                images.add(i);
+            }
+        }catch(SQLException oops)
+        {
+            oops.printStackTrace();
+            disconnect();
+            return new ArrayList();
+        }
+        return images;
     }
     public static ArrayList<Specimen> getSpecimens(SpecimenRegion region, Plant plant){
         ArrayList<Specimen> specimens = new ArrayList();
@@ -175,6 +201,7 @@ public class DBC {
             disconnect();
             return null;
         }
+        p.images = getPlantImages(p.plant_id);
         return p;
     }
     
