@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import plantalog.models.Plant;
+import plantalog.models.Specimen;
 import plantalog.models.SpecimenRegion;
 
 /**
@@ -42,13 +43,15 @@ public class MainFrame extends javax.swing.JFrame {
         plantSearchResults = new javax.swing.JList();
         plantSearchTextField = new javax.swing.JTextField();
         plantFilterButton = new javax.swing.JButton();
-        specimenSearchTextField = new javax.swing.JTextField();
         specimenFilterButton = new javax.swing.JButton();
         specimenSearchResultsPane = new javax.swing.JScrollPane();
         specimenSearchResults = new javax.swing.JList();
         mainPanel = new javax.swing.JPanel();
-        detailsPanel = new javax.swing.JPanel();
+        logo2 = new javax.swing.JLabel();
         specimenName = new javax.swing.JLabel();
+        specimenNotes = new javax.swing.JLabel();
+        plantNotes = new javax.swing.JLabel();
+        search = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
@@ -82,9 +85,6 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(logo1))
-                    .addGroup(loginPanelLayout.createSequentialGroup()
                         .addGap(210, 210, 210)
                         .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -98,15 +98,18 @@ public class MainFrame extends javax.swing.JFrame {
                                         .addGap(8, 8, 8)))
                                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(usernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                                    .addComponent(passwordField))))))
+                                    .addComponent(passwordField)))))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(logo1)))
                 .addContainerGap(313, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(logo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(112, 112, 112)
+                .addContainerGap()
+                .addComponent(logo1)
+                .addGap(151, 151, 151)
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLabel)
                     .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -169,13 +172,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        specimenSearchTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                specimenSearchTextFieldActionPerformed(evt);
-            }
-        });
-
-        specimenFilterButton.setText("Filter");
+        specimenFilterButton.setText("Load");
         specimenFilterButton.setToolTipText("");
         specimenFilterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,19 +212,16 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(plantSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(searchPanelLayout.createSequentialGroup()
-                                .addComponent(specimenSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(specimenFilterButton))
-                            .addComponent(specimenSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(specimenSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(specimenFilterButton))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         searchPanelLayout.setVerticalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(searchPanelLayout.createSequentialGroup()
@@ -241,9 +235,7 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(regionSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(plantSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(searchPanelLayout.createSequentialGroup()
-                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(specimenSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(specimenFilterButton))
+                        .addComponent(specimenFilterButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(specimenSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(34, 34, 34))
@@ -251,40 +243,55 @@ public class MainFrame extends javax.swing.JFrame {
 
         getContentPane().add(searchPanel, "search");
 
-        specimenName.setText("Select a Specimen");
+        logo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
+
         specimenName.setToolTipText("");
 
-        javax.swing.GroupLayout detailsPanelLayout = new javax.swing.GroupLayout(detailsPanel);
-        detailsPanel.setLayout(detailsPanelLayout);
-        detailsPanelLayout.setHorizontalGroup(
-            detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(detailsPanelLayout.createSequentialGroup()
-                .addContainerGap(367, Short.MAX_VALUE)
-                .addComponent(specimenName, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        detailsPanelLayout.setVerticalGroup(
-            detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(detailsPanelLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(specimenName)
-                .addContainerGap(410, Short.MAX_VALUE))
-        );
+        search.setText("Search New");
+        search.setToolTipText("");
+        search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(detailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(logo2)
+                        .addGap(27, 27, 27)
+                        .addComponent(search))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(plantNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(specimenName, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(specimenNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(339, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(detailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(33, 33, 33))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(logo2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(search)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(specimenName, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(plantNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(specimenNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123))
         );
 
         getContentPane().add(mainPanel, "main");
@@ -336,30 +343,29 @@ public class MainFrame extends javax.swing.JFrame {
         this.plantSearchResults.setModel(toListModel(DBC.getPlants(filter)));
     }//GEN-LAST:event_plantFilterButtonActionPerformed
 
-    private void specimenSearchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_specimenSearchTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_specimenSearchTextFieldActionPerformed
-
     private void specimenFilterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_specimenFilterButtonActionPerformed
-        SpecimenRegion r = (SpecimenRegion)this.regionSearchResults.getSelectedValue();
-        Plant p = (Plant)this.plantSearchResults.getSelectedValue();
-        this.specimenSearchResults.setModel(toListModel(DBC.getSpecimens(r,p)));
+        Specimen s = (Specimen)this.specimenSearchResults.getSelectedValue();
+        loadData(s);
+        setCard("main");
     }//GEN-LAST:event_specimenFilterButtonActionPerformed
 
     private void specimenSearchResultsresultOnClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_specimenSearchResultsresultOnClick
         // TODO add your handling code here:
     }//GEN-LAST:event_specimenSearchResultsresultOnClick
 
+    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+        setCard("search");
+    }//GEN-LAST:event_searchActionPerformed
+
     /**
      * Load data for a specimen in the main frame
      * 
-     * @param specimenID 
+     * @param s
      */
-    private void loadData(Plant p){
-        // record view from user
-        // get data for user
-        // display data
-        this.specimenName.setText(p.sci_name + " '" + p.cultivar + "' (" + p.com_name + ")");
+    private void loadData(Specimen s){
+        this.specimenName.setText(s.plant + " " + s.lives_in);
+        this.specimenNotes.setText(s.notes);
+        this.plantNotes.setText(s.plant.notes);
     }
     
     private void setCard(String cardname){
@@ -413,15 +419,16 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel detailsPanel;
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel logo1;
+    private javax.swing.JLabel logo2;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JButton plantFilterButton;
+    private javax.swing.JLabel plantNotes;
     private javax.swing.JList plantSearchResults;
     private javax.swing.JScrollPane plantSearchResultsPane;
     private javax.swing.JTextField plantSearchTextField;
@@ -429,12 +436,13 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JList regionSearchResults;
     private javax.swing.JScrollPane regionSearchResultsPane;
     private javax.swing.JTextField regionSearchTextField;
+    private javax.swing.JButton search;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JButton specimenFilterButton;
     private javax.swing.JLabel specimenName;
+    private javax.swing.JLabel specimenNotes;
     private javax.swing.JList specimenSearchResults;
     private javax.swing.JScrollPane specimenSearchResultsPane;
-    private javax.swing.JTextField specimenSearchTextField;
     private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
