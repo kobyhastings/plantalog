@@ -57,24 +57,23 @@ public class DBC {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }finally{
-            if(s != null)
-                close(s);
+            if(s != null)close(s);
         }
     }
     public static <T extends Model> ArrayList<T> executeQuery(String query, T modelclass){
         //System.out.println("executing "+ query);
         Statement s = null;
+        ResultSet r = null;
         try {
             s = conn.createStatement();
-            ResultSet r = s.executeQuery(query);
+            r = s.executeQuery(query);
             return modelclass.parseResultSet(r);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }finally{
-            if(s != null)
-                close(s);
+            if(s != null)close(s);
+            if(r != null)close(r);
         }
-        System.out.println("err");
         return new ArrayList();
     }
     
@@ -88,14 +87,6 @@ public class DBC {
             close(conn);        
     }
     
-    public static User login(String username, String password){
-        ArrayList<User> users = executeQuery(
-                "Select * from Users where name=\""+
-                username+"\" and password=\""+password+"\";", new User());
-        if(users.size() > 0)
-            return users.get(0);
-        return null;
-    }    
     public static void view(Specimen s, User u){
         execute("insert into Views (user_id, specimen_id) values('"+u.user_id +"', '"+s.specimen_id+"');");
     }
