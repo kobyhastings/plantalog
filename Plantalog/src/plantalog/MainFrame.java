@@ -53,6 +53,7 @@ public class MainFrame extends javax.swing.JFrame {
         header = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         greeting = new javax.swing.JLabel();
+        logoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -279,6 +280,14 @@ public class MainFrame extends javax.swing.JFrame {
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
 
+        logoutButton.setText("Logout");
+        logoutButton.setVisible(false);
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
@@ -286,9 +295,11 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(logo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 348, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 317, Short.MAX_VALUE)
                 .addComponent(greeting, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(logoutButton)
+                .addContainerGap())
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,7 +309,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(greeting, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(logoutButton)
+                    .addComponent(greeting, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -346,12 +359,15 @@ public class MainFrame extends javax.swing.JFrame {
         String password = String.valueOf(passwordField.getPassword());
         Plantalog.currentUser = DBC.login(username, password);
         if(Plantalog.currentUser != null){
+            usernameField.setText("");
+            passwordField.setText("");
             greeting.setText("Hello " + Plantalog.currentUser.name);
             setCard("search");
+            logoutButton.setVisible(true);
+            refreshRegionSearchPane();
+            refreshPlantSearchPane();
+            refreshSpecimenSearchPane();
         }
-        refreshRegionSearchPane();
-        refreshPlantSearchPane();
-        refreshSpecimenSearchPane();
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void regionSearchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regionSearchTextFieldActionPerformed
@@ -386,6 +402,13 @@ public class MainFrame extends javax.swing.JFrame {
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         setCard("search");
     }//GEN-LAST:event_searchActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        Plantalog.currentUser = null;
+        logoutButton.setVisible(false);
+        greeting.setText("");
+        setCard("login");
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**
      * Load data for a specimen in the main frame
@@ -446,6 +469,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 MainFrame m = new MainFrame();
                 m.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -467,6 +491,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JLabel logo;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
