@@ -76,4 +76,13 @@ public class User extends Model{
     public static ArrayList<User> getAll(){
         return DBC.executeQuery("Select * from User;", new User());
     }
+    
+    public static User login(String username, String password){
+        ArrayList<User> users = DBC.executeQuery(
+                "Select * from Users where name=\""+
+                username+"\" and password=\""+password+"\";", new User());
+        if(users.size() > 0)
+            return users.get(0);
+        return null;
+    }
 }

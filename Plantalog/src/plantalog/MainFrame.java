@@ -2,7 +2,6 @@
 package plantalog;
 
 import java.awt.CardLayout;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -13,6 +12,7 @@ import plantalog.models.Plant;
 import plantalog.models.PlantImage;
 import plantalog.models.Specimen;
 import plantalog.models.SpecimenRegion;
+import plantalog.models.User;
 
 /**
  * Handles all user interactions for the business activities
@@ -399,7 +399,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         String username = usernameField.getText();
         String password = String.valueOf(passwordField.getPassword());
-        Plantalog.currentUser = DBC.login(username, password);
+        Plantalog.currentUser = User.login(username, password);
         if(Plantalog.currentUser != null){
             usernameField.setText("");
             passwordField.setText("");
