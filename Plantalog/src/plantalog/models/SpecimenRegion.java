@@ -78,4 +78,8 @@ public class SpecimenRegion extends Model {
             regions = DBC.executeQuery("Select * from SpecimenRegion where region_name LIKE '%"+filter+"%'", new SpecimenRegion());
         return regions;
     }
+    
+    public static void add(String name, String desc){
+        DBC.execute("insert into SpecimenRegion values (\"" + name + "\", \""+ desc + "\")");
+    }
 }

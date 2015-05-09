@@ -39,6 +39,14 @@ public class MainFrame extends javax.swing.JFrame {
         usernameField = new javax.swing.JTextField();
         passwordField = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
+        addRegion = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        addRegionNameTextField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        addRegionDescTextArea = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        addRegionSaveButton = new javax.swing.JButton();
         searchPanel = new javax.swing.JPanel();
         regionSearchTextField = new javax.swing.JTextField();
         regionFilterButton = new javax.swing.JButton();
@@ -64,6 +72,7 @@ public class MainFrame extends javax.swing.JFrame {
         greeting = new javax.swing.JLabel();
         logoutButton = new javax.swing.JButton();
         search = new javax.swing.JButton();
+        addRegionButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,7 +121,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(usernameField)
                             .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(287, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,6 +140,77 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         cards.add(loginPanel, "login");
+
+        jLabel1.setText("Add Region");
+
+        addRegionNameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addRegionNameTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setLabelFor(addRegionNameTextField);
+        jLabel2.setText("Region Name");
+        jLabel2.setToolTipText("");
+
+        addRegionDescTextArea.setColumns(20);
+        addRegionDescTextArea.setRows(5);
+        jScrollPane1.setViewportView(addRegionDescTextArea);
+
+        jLabel3.setLabelFor(addRegionDescTextArea);
+        jLabel3.setText("Description");
+        jLabel3.setToolTipText("");
+
+        addRegionSaveButton.setText("Save");
+        addRegionSaveButton.setToolTipText("");
+        addRegionSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addRegionSaveButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout addRegionLayout = new javax.swing.GroupLayout(addRegion);
+        addRegion.setLayout(addRegionLayout);
+        addRegionLayout.setHorizontalGroup(
+            addRegionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addRegionLayout.createSequentialGroup()
+                .addGroup(addRegionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addRegionLayout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jLabel1))
+                    .addGroup(addRegionLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addGroup(addRegionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(addRegionSaveButton)
+                            .addGroup(addRegionLayout.createSequentialGroup()
+                                .addGroup(addRegionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(addRegionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane1)
+                                    .addComponent(addRegionNameTextField))))))
+                .addContainerGap(399, Short.MAX_VALUE))
+        );
+        addRegionLayout.setVerticalGroup(
+            addRegionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addRegionLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(addRegionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addRegionNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(29, 29, 29)
+                .addGroup(addRegionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(35, 35, 35)
+                .addComponent(addRegionSaveButton)
+                .addContainerGap(153, Short.MAX_VALUE))
+        );
+
+        cards.add(addRegion, "addRegion");
 
         regionSearchTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -283,7 +363,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(ImageListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(mainImageCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)))
+                        .addComponent(mainImageCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
@@ -327,6 +407,15 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        addRegionButton.setText("Add Region");
+        addRegionButton.setToolTipText("");
+        addRegionButton.setVisible(false);
+        addRegionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addRegionButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
@@ -336,6 +425,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(logo)
                 .addGap(37, 37, 37)
                 .addComponent(search)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(addRegionButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(greeting, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -351,7 +442,9 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(search)
+                    .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(search)
+                        .addComponent(addRegionButton))
                     .addComponent(logoutButton)
                     .addComponent(greeting, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -410,6 +503,10 @@ public class MainFrame extends javax.swing.JFrame {
             refreshRegionSearchPane();
             refreshPlantSearchPane();
             refreshSpecimenSearchPane();
+            
+            if(Plantalog.currentUser.isEmployee()){ //show employee controls
+                addRegionButton.setVisible(true);
+            }
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
@@ -447,6 +544,10 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_searchActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        
+        if(Plantalog.currentUser.isEmployee()){ //hide admin if there
+            addRegionButton.setVisible(false);
+        }
         Plantalog.currentUser = null;
         logoutButton.setVisible(false);
         search.setVisible(false);
@@ -461,6 +562,22 @@ public class MainFrame extends javax.swing.JFrame {
         else
             System.out.println("failed to find image selected");
     }//GEN-LAST:event_imagesListresultOnClick
+
+    private void addRegionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRegionButtonActionPerformed
+        setCard("addRegion");
+        this.addRegionDescTextArea.setText("");
+        this.addRegionNameTextField.setText("");
+    }//GEN-LAST:event_addRegionButtonActionPerformed
+
+    private void addRegionNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRegionNameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addRegionNameTextFieldActionPerformed
+
+    private void addRegionSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRegionSaveButtonActionPerformed
+        SpecimenRegion.add(addRegionNameTextField.getText(), addRegionDescTextArea.getText());
+        setCard("search");
+        refreshRegionSearchPane();
+    }//GEN-LAST:event_addRegionSaveButtonActionPerformed
 
     /**
      * Load data for a specimen in the main frame
@@ -568,10 +685,19 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ImageListScrollPane;
+    private javax.swing.JPanel addRegion;
+    private javax.swing.JButton addRegionButton;
+    private javax.swing.JTextArea addRegionDescTextArea;
+    private javax.swing.JTextField addRegionNameTextField;
+    private javax.swing.JButton addRegionSaveButton;
     private javax.swing.JPanel cards;
     private javax.swing.JLabel greeting;
     private javax.swing.JPanel header;
     private javax.swing.JList imagesList;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JLabel logo;
