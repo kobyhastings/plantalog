@@ -33,15 +33,22 @@ public class MainFrame extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
         logo1 = new javax.swing.JLabel();
         searchPanel = new javax.swing.JPanel();
+        regionSearchTextField = new javax.swing.JTextField();
+        regionFilterButton = new javax.swing.JButton();
+        regionSearchResultsPane = new javax.swing.JScrollPane();
+        regionSearchResults = new javax.swing.JList();
+        logo = new javax.swing.JLabel();
+        plantSearchResultsPane = new javax.swing.JScrollPane();
+        plantSearchResults = new javax.swing.JList();
+        plantSearchTextField = new javax.swing.JTextField();
+        plantFilterButton = new javax.swing.JButton();
+        specimenSearchTextField = new javax.swing.JTextField();
+        specimenFilterButton = new javax.swing.JButton();
+        specimenSearchResultsPane = new javax.swing.JScrollPane();
+        specimenSearchResults = new javax.swing.JList();
         mainPanel = new javax.swing.JPanel();
         detailsPanel = new javax.swing.JPanel();
         specimenName = new javax.swing.JLabel();
-        leftSidePanel = new javax.swing.JPanel();
-        searchTextField = new javax.swing.JTextField();
-        searchButton = new javax.swing.JButton();
-        searchResultsPane = new javax.swing.JScrollPane();
-        searchResults = new javax.swing.JList();
-        logo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
@@ -92,7 +99,7 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(usernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                                     .addComponent(passwordField))))))
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(313, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,20 +119,137 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(209, 209, 209))
         );
 
-        getContentPane().add(loginPanel, "card3");
+        getContentPane().add(loginPanel, "login");
+
+        regionSearchTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regionSearchTextFieldActionPerformed(evt);
+            }
+        });
+
+        regionFilterButton.setText("Filter");
+        regionFilterButton.setToolTipText("");
+        regionFilterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regionFilterButtonActionPerformed(evt);
+            }
+        });
+
+        regionSearchResults.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        regionSearchResults.setToolTipText("");
+        regionSearchResults.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                resultOnClick(evt);
+            }
+        });
+        regionSearchResultsPane.setViewportView(regionSearchResults);
+
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
+
+        plantSearchResults.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        plantSearchResults.setToolTipText("");
+        plantSearchResults.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                plantSearchResultsresultOnClick(evt);
+            }
+        });
+        plantSearchResultsPane.setViewportView(plantSearchResults);
+
+        plantSearchTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plantSearchTextFieldActionPerformed(evt);
+            }
+        });
+
+        plantFilterButton.setText("Filter");
+        plantFilterButton.setToolTipText("");
+        plantFilterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plantFilterButtonActionPerformed(evt);
+            }
+        });
+
+        specimenSearchTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                specimenSearchTextFieldActionPerformed(evt);
+            }
+        });
+
+        specimenFilterButton.setText("Filter");
+        specimenFilterButton.setToolTipText("");
+        specimenFilterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                specimenFilterButtonActionPerformed(evt);
+            }
+        });
+
+        specimenSearchResults.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        specimenSearchResults.setToolTipText("");
+        specimenSearchResults.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                specimenSearchResultsresultOnClick(evt);
+            }
+        });
+        specimenSearchResultsPane.setViewportView(specimenSearchResults);
 
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
         searchPanelLayout.setHorizontalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 624, Short.MAX_VALUE)
+            .addGroup(searchPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(logo)
+                    .addGroup(searchPanelLayout.createSequentialGroup()
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(searchPanelLayout.createSequentialGroup()
+                                .addComponent(regionSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(regionFilterButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(plantSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(plantFilterButton))
+                            .addGroup(searchPanelLayout.createSequentialGroup()
+                                .addComponent(regionSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(plantSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(searchPanelLayout.createSequentialGroup()
+                                .addComponent(specimenSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(specimenFilterButton))
+                            .addComponent(specimenSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         searchPanelLayout.setVerticalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 504, Short.MAX_VALUE)
+            .addGroup(searchPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(searchPanelLayout.createSequentialGroup()
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(regionSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(regionFilterButton)
+                            .addComponent(plantSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(plantFilterButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(regionSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(plantSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(searchPanelLayout.createSequentialGroup()
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(specimenSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(specimenFilterButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(specimenSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 34, 34))
         );
 
-        getContentPane().add(searchPanel, "card3");
+        getContentPane().add(searchPanel, "search");
 
         specimenName.setText("Select a Specimen");
         specimenName.setToolTipText("");
@@ -135,7 +259,7 @@ public class MainFrame extends javax.swing.JFrame {
         detailsPanelLayout.setHorizontalGroup(
             detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(detailsPanelLayout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap(367, Short.MAX_VALUE)
                 .addComponent(specimenName, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         detailsPanelLayout.setVerticalGroup(
@@ -143,55 +267,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(detailsPanelLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(specimenName)
-                .addContainerGap(409, Short.MAX_VALUE))
-        );
-
-        searchButton.setText("Search");
-        searchButton.setToolTipText("");
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
-            }
-        });
-
-        searchResults.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        searchResults.setToolTipText("");
-        searchResults.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                resultOnClick(evt);
-            }
-        });
-        searchResultsPane.setViewportView(searchResults);
-
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
-
-        javax.swing.GroupLayout leftSidePanelLayout = new javax.swing.GroupLayout(leftSidePanel);
-        leftSidePanel.setLayout(leftSidePanelLayout);
-        leftSidePanelLayout.setHorizontalGroup(
-            leftSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(leftSidePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(leftSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logo)
-                    .addGroup(leftSidePanelLayout.createSequentialGroup()
-                        .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        leftSidePanelLayout.setVerticalGroup(
-            leftSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(leftSidePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(leftSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(410, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -199,14 +275,9 @@ public class MainFrame extends javax.swing.JFrame {
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(detailsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(detailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(leftSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(376, Short.MAX_VALUE)))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,30 +285,19 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(detailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(33, 33, 33))
-            .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(mainPanelLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(leftSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(13, Short.MAX_VALUE)))
         );
 
-        getContentPane().add(mainPanel, "card4");
+        getContentPane().add(mainPanel, "main");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        ArrayList<Plant> results = DBC.search(this.searchTextField.getText());
-        
-        DefaultListModel<Plant> l = new DefaultListModel();
-        for(Plant p: results)
-            l.addElement(p);
-        this.searchResults.setModel(l);
-    }//GEN-LAST:event_searchButtonActionPerformed
-
+    private void regionFilterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regionFilterButtonActionPerformed
+    }//GEN-LAST:event_regionFilterButtonActionPerformed
+    
     private void resultOnClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resultOnClick
         // TODO add your handling code here:
-        Plant plant = (Plant)this.searchResults.getSelectedValue();
+        Plant plant = (Plant)this.regionSearchResults.getSelectedValue();
         this.loadData(plant);
         
     }//GEN-LAST:event_resultOnClick
@@ -251,8 +311,36 @@ public class MainFrame extends javax.swing.JFrame {
         String password = String.valueOf(passwordField.getPassword());
         Plantalog.currentUser = DBC.login(username, password);
         if(Plantalog.currentUser != null)
-            setCard("card4");
+            setCard("search");
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void regionSearchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regionSearchTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_regionSearchTextFieldActionPerformed
+
+    private void plantSearchResultsresultOnClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plantSearchResultsresultOnClick
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plantSearchResultsresultOnClick
+
+    private void plantSearchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plantSearchTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plantSearchTextFieldActionPerformed
+
+    private void plantFilterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plantFilterButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plantFilterButtonActionPerformed
+
+    private void specimenSearchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_specimenSearchTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_specimenSearchTextFieldActionPerformed
+
+    private void specimenFilterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_specimenFilterButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_specimenFilterButtonActionPerformed
+
+    private void specimenSearchResultsresultOnClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_specimenSearchResultsresultOnClick
+        // TODO add your handling code here:
+    }//GEN-LAST:event_specimenSearchResultsresultOnClick
 
     /**
      * Load data for a specimen in the main frame
@@ -268,6 +356,13 @@ public class MainFrame extends javax.swing.JFrame {
     
     private void setCard(String cardname){
         ((CardLayout)getContentPane().getLayout()).show(getContentPane(), cardname);        
+    }
+    
+    private <T> DefaultListModel<T> toListModel(ArrayList<T> list){
+        DefaultListModel<T> l = new DefaultListModel();
+        for(T t: list)
+            l.addElement(t);
+        return l;
     }
     public static void start() {
         /* Set the Nimbus look and feel */
@@ -311,7 +406,6 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel detailsPanel;
-    private javax.swing.JPanel leftSidePanel;
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JLabel logo;
@@ -319,12 +413,20 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
-    private javax.swing.JButton searchButton;
+    private javax.swing.JButton plantFilterButton;
+    private javax.swing.JList plantSearchResults;
+    private javax.swing.JScrollPane plantSearchResultsPane;
+    private javax.swing.JTextField plantSearchTextField;
+    private javax.swing.JButton regionFilterButton;
+    private javax.swing.JList regionSearchResults;
+    private javax.swing.JScrollPane regionSearchResultsPane;
+    private javax.swing.JTextField regionSearchTextField;
     private javax.swing.JPanel searchPanel;
-    private javax.swing.JList searchResults;
-    private javax.swing.JScrollPane searchResultsPane;
-    private javax.swing.JTextField searchTextField;
+    private javax.swing.JButton specimenFilterButton;
     private javax.swing.JLabel specimenName;
+    private javax.swing.JList specimenSearchResults;
+    private javax.swing.JScrollPane specimenSearchResultsPane;
+    private javax.swing.JTextField specimenSearchTextField;
     private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
