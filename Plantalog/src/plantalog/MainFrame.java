@@ -2,6 +2,8 @@
 package plantalog;
 
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import plantalog.models.Plant;
 
 /**
  * Handles all user interactions for the business activities
@@ -31,6 +33,7 @@ public class MainFrame extends javax.swing.JFrame {
         specimenName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 153));
 
         searchButton.setText("Search");
         searchButton.setToolTipText("");
@@ -40,11 +43,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        searchResults.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "stuff", "nmre", "sf", "se" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         searchResults.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         searchResults.setToolTipText("");
         searchResults.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,7 +73,7 @@ public class MainFrame extends javax.swing.JFrame {
             leftSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftSidePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(leftSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -95,7 +93,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(specimenName, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,32 +109,31 @@ public class MainFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(leftSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(leftSidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        ArrayList<String> results = DBC.search(this.searchTextField.getText());
-        String[] arr = new String[results.size()];
-        int i = 0;
-        for(String s:results){
-            arr[i] = s;
-        }
-        this.searchResults.setListData(arr);
+        ArrayList<Plant> results = DBC.search(this.searchTextField.getText());
+        
+        DefaultListModel<Plant> l = new DefaultListModel();
+        for(Plant p: results)
+            l.addElement(p);
+        this.searchResults.setModel(l);
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void resultOnClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resultOnClick
         // TODO add your handling code here:
-        Object value = this.searchResults.getSelectedValue();
-        this.loadData((String)value);
+        Plant plant = (Plant)this.searchResults.getSelectedValue();
+        this.loadData(plant);
         
     }//GEN-LAST:event_resultOnClick
 
@@ -145,11 +142,11 @@ public class MainFrame extends javax.swing.JFrame {
      * 
      * @param specimenID 
      */
-    private void loadData(String specimenID){
+    private void loadData(Plant p){
         // record view from user
         // get data for user
         // display data
-        this.specimenName.setText(specimenID);
+        this.specimenName.setText(p.sci_name + " '" + p.cultivar + "' (" + p.com_name + ")");
     }
     public static void start() {
         /* Set the Nimbus look and feel */
