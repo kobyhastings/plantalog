@@ -83,6 +83,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         loginButton.setText("Login");
         loginButton.setToolTipText("");
+        getRootPane().setDefaultButton(loginButton);
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
@@ -252,7 +253,12 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        mainImage.setText("jLabel1");
+        mainImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mainImage.setText("loading...");
+        mainImage.setToolTipText("");
+        mainImage.setAlignmentX(0.5F);
+        mainImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        mainImage.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -313,7 +319,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(logo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 317, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(greeting, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(logoutButton)
