@@ -504,15 +504,15 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     private void refreshRegionSearchPane(){
-        this.regionSearchResults.setModel(toListModel(DBC.getRegions(this.regionSearchTextField.getText())));
+        this.regionSearchResults.setModel(toListModel(SpecimenRegion.getRegions(this.regionSearchTextField.getText())));
     }
     private void refreshPlantSearchPane(){
-        this.plantSearchResults.setModel(toListModel(DBC.getPlants(this.plantSearchTextField.getText())));
+        this.plantSearchResults.setModel(toListModel(Plant.getPlants(this.plantSearchTextField.getText())));
     }
     private void refreshSpecimenSearchPane(){
         SpecimenRegion r = (SpecimenRegion)this.regionSearchResults.getSelectedValue();
         Plant p = (Plant)this.plantSearchResults.getSelectedValue();
-        this.specimenSearchResults.setModel(toListModel(DBC.getSpecimens(r,p)));
+        this.specimenSearchResults.setModel(toListModel(Specimen.getSpecimens(r,p)));
     }
     
     private void setCard(String cardname){
