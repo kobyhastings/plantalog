@@ -1,6 +1,8 @@
 
 package plantalog;
 import java.sql.*;
+import java.util.ArrayList;
+import plantalog.models.Plant;
 
 /**
  * Database Connection Class
@@ -21,8 +23,8 @@ public class DBC {
      */
     public static void connect(String username, String password){
         
-        String jdbcDriver = "oracle.jdbc.driver.OracleDriver";
-        String jdbcUrl = "jdbc:oracle:thin:@//csshrpt.eku.edu:1521/cscdb";  
+        String jdbcDriver = "com.mysql.jdbc.Driver";  //"oracle.jdbc.driver.OracleDriver";
+        String jdbcUrl = "jdbc:mysql://localhost/Plantalog?username=plantalog&password=plantalogpw";  //"jdbc:oracle:thin:@//csshrpt.eku.edu:1521/cscdb";
         // URL for the database including the protocol (jdbc), the vendor 
         //(oracle), the driver (thin), the server (csshrpt.eku.edu), and 
         //the port number (1521)
@@ -30,7 +32,7 @@ public class DBC {
         try{
             Class.forName(jdbcDriver);
             //persist the connection throughout the application
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            conn = DriverManager.getConnection(jdbcUrl, "plantalog", "plantalogpw");
 
             // Create a statement object that will send SQL statements to DBMS
             stmt = conn.createStatement();
@@ -67,10 +69,55 @@ public class DBC {
         }
     }
     
-    public static String[] search(String query){
+    public static ArrayList<String> search(String query){
         // query db for stuff, return results
         String[] strings = {"hi", "people", query};
-        return strings;
+        ArrayList<String> results = getAllPlants();
+        return results;
+    }
+    
+    public static ArrayList<String> getAllPlants(){
+        ArrayList<String> plants = new ArrayList();
+        try
+        {
+            Plant p;
+            ResultSet r = stmt.executeQuery("Select * from Plant");
+            while(!r.isLast()){
+                p = new Plant();
+                r.next();
+                p.plant_id = r.getString("plant_id");
+                p.cultivar = r.getString("cultivar");
+                p.sci_name = r.getString("sci_name");
+                p.com_name = r.getString("com_name");
+                p.notes = r.getString("notes");
+                plants.add(p.toString());
+            }
+        }catch(Throwable oops)
+        {
+            oops.printStackTrace();
+            disconnect();
+            return new ArrayList();
+        }
+        return plants;
+    }
+    public static Plant getPlant(String plant_id){
+        Plant p = new Plant();
+        try
+        {
+            ResultSet r = stmt.executeQuery("Select * from Plant where plant_id=\""+plant_id+"\"");
+            r.next();
+            p.plant_id = r.getString("plant_id");
+            p.cultivar = r.getString("cultivar");
+            p.sci_name = r.getString("sci_name");
+            p.com_name = r.getString("com_name");
+            p.notes = r.getString("notes");
+        }catch(Throwable oops)
+        {
+            oops.printStackTrace();
+            disconnect();
+            return null;
+        }
+        return p;
     }
     
     /**

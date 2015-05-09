@@ -124,8 +124,13 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        String[] results = DBC.search(this.searchTextField.getText());
-        this.searchResults.setListData(results);
+        ArrayList<String> results = DBC.search(this.searchTextField.getText());
+        String[] arr = new String[results.size()];
+        int i = 0;
+        for(String s:results){
+            arr[i] = s;
+        }
+        this.searchResults.setListData(arr);
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void resultOnClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resultOnClick

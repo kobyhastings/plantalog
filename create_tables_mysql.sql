@@ -5,6 +5,11 @@ Authors: Aaron Eisenberg
 Date: 5/7/15
 */
 
+drop database Plantalog;
+create database Plantalog;
+
+use Plantalog;
+
 create table Users (
 	user_id char(9) primary key,
 	name varchar(25),
@@ -54,3 +59,7 @@ create table PlantImage (
 	primary key(plant_id, image_id),
 	constraint plant_id_exists foreign key(plant_id) references Plant(plant_id) on delete cascade
 );
+
+CREATE USER plantalog IDENTIFIED BY 'plantalogpw'; 
+grant usage on *.* to plantalog@localhost identified by 'plantalogpw'; 
+grant all privileges on Plantalog.* to plantalog@localhost;
