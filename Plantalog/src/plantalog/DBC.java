@@ -133,7 +133,7 @@ public class DBC {
         ArrayList<Specimen> specimens = new ArrayList();
         try
         {
-            Specimen p;
+            Specimen s;
             ResultSet r;
             if(region != null && plant != null)
                 r = stmt.executeQuery("Select * from Specimen where "+
@@ -148,9 +148,9 @@ public class DBC {
             else
                 r = stmt.executeQuery("Select * from Specimen");
             while(r.next()){
-                p = new Specimen();
-                p.fromResultSet(r);
-                specimens.add(p);
+                s = new Specimen();
+                s.fromResultSet(r);
+                specimens.add(s);
             }
         }catch(SQLException oops)
         {
@@ -158,6 +158,8 @@ public class DBC {
             disconnect();
             return new ArrayList();
         }
+        for(Specimen s : specimens)
+                s.plant = getPlant(s.plant_id);
         return specimens;
     }
     public static Plant getPlant(String plant_id){
@@ -166,11 +168,7 @@ public class DBC {
         {
             ResultSet r = stmt.executeQuery("Select * from Plant where plant_id=\""+plant_id+"\"");
             r.next();
-            p.plant_id = r.getString("plant_id");
-            p.cultivar = r.getString("cultivar");
-            p.sci_name = r.getString("sci_name");
-            p.com_name = r.getString("com_name");
-            p.notes = r.getString("notes");
+            p.fromResultSet(r);
         }catch(SQLException oops)
         {
             oops.printStackTrace();

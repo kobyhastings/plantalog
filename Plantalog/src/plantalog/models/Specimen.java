@@ -22,6 +22,8 @@ public class Specimen extends Model {
     public double longitude;
     public Date when_added;
     public String lives_in;
+    
+    public Plant plant;
 
     @Override
     public void fromResultSet(ResultSet r) {
@@ -39,5 +41,13 @@ public class Specimen extends Model {
         {
             oops.printStackTrace();
         }
+    }
+    
+    @Override
+    public String toString(){
+        if(plant != null)
+            return plant.sci_name + "'"+plant.cultivar+"' " + lives_in;
+        else
+            return lives_in;
     }
 }
