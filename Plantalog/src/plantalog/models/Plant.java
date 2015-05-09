@@ -7,6 +7,7 @@
 package plantalog.models;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -26,6 +27,15 @@ public class Plant extends Model {
 
     @Override
     public void fromResultSet(ResultSet r) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            plant_id = r.getString("plant_id");
+            cultivar = r.getString("cultivar");
+            sci_name = r.getString("sci_name");
+            com_name = r.getString("com_name");
+            notes = r.getString("notes");
+        }catch(SQLException oops)
+        {
+            oops.printStackTrace();
+        }
     }
 }

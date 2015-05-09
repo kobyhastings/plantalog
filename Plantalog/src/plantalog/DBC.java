@@ -3,6 +3,8 @@ package plantalog;
 import java.sql.*;
 import java.util.ArrayList;
 import plantalog.models.Plant;
+import plantalog.models.Specimen;
+import plantalog.models.SpecimenRegion;
 import plantalog.models.User;
 
 /**
@@ -76,27 +78,47 @@ public class DBC {
         }
     }
     
-    public static ArrayList<Plant> search(String query){
-        // query db for stuff, return results
-        String[] strings = {"hi", "people", query};
-        ArrayList<Plant> results = getAllPlants();
-        return results;
+    public static ArrayList<SpecimenRegion> getRegions(String filter){
+        ArrayList<SpecimenRegion> regions = new ArrayList();
+        try
+        {
+            SpecimenRegion sr;
+            ResultSet r;
+            if(filter.isEmpty())
+                r = stmt.executeQuery("Select * from SpecimenRegion;");
+            else
+                r = stmt.executeQuery("Select * from SpecimenRegion where region_name LIKE '%"+filter+"%'");                
+            while(r.next()){
+                sr = new SpecimenRegion();
+                sr.fromResultSet(r);
+                regions.add(sr);
+            }
+        }catch(SQLException oops)
+        {
+            oops.printStackTrace();
+            disconnect();
+            return new ArrayList();
+        }
+        return regions;
+        
     }
-    
-    public static ArrayList<Plant> getAllPlants(){
+    public static ArrayList<Plant> getPlants(String filter){
         ArrayList<Plant> plants = new ArrayList();
         try
         {
             Plant p;
-            ResultSet r = stmt.executeQuery("Select * from Plant;");
-            while(!r.isLast()){
+            ResultSet r;
+            if(filter.isEmpty())
+                r = stmt.executeQuery("Select * from Plant;");
+            else
+                r = stmt.executeQuery(
+                        "Select * from Plant where "+
+                        "sci_name LIKE '%"+filter+"%' or "+
+                        "cultivar LIKE '%"+filter+"%' or "+
+                        "com_name LIKE '%"+filter+"%'");
+            while(r.next()){
                 p = new Plant();
-                r.next();
-                p.plant_id = r.getString("plant_id");
-                p.cultivar = r.getString("cultivar");
-                p.sci_name = r.getString("sci_name");
-                p.com_name = r.getString("com_name");
-                p.notes = r.getString("notes");
+                p.fromResultSet(r);
                 plants.add(p);
             }
         }catch(SQLException oops)
@@ -106,6 +128,37 @@ public class DBC {
             return new ArrayList();
         }
         return plants;
+    }
+    public static ArrayList<Specimen> getSpecimens(SpecimenRegion region, Plant plant){
+        ArrayList<Specimen> specimens = new ArrayList();
+        try
+        {
+            Specimen p;
+            ResultSet r;
+            if(region != null && plant != null)
+                r = stmt.executeQuery("Select * from Specimen where "+
+                        "lives_in='"+region.region_name+"' and "+
+                        "plant_id='"+plant.plant_id+"'");
+            else if(region != null)
+                r = stmt.executeQuery("Select * from Specimen where "+
+                        "lives_in='"+region.region_name+"'");
+            else if(plant != null)
+                r = stmt.executeQuery("Select * from Specimen where "+
+                        "plant_id='"+plant.plant_id+"'");
+            else
+                r = stmt.executeQuery("Select * from Specimen");
+            while(r.next()){
+                p = new Specimen();
+                p.fromResultSet(r);
+                specimens.add(p);
+            }
+        }catch(SQLException oops)
+        {
+            oops.printStackTrace();
+            disconnect();
+            return new ArrayList();
+        }
+        return specimens;
     }
     public static Plant getPlant(String plant_id){
         Plant p = new Plant();

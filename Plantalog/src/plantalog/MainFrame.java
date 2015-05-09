@@ -4,8 +4,8 @@ package plantalog;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
 import plantalog.models.Plant;
+import plantalog.models.SpecimenRegion;
 
 /**
  * Handles all user interactions for the business activities
@@ -293,12 +293,14 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regionFilterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regionFilterButtonActionPerformed
+        this.regionSearchResults.setModel(toListModel(DBC.getRegions(this.regionSearchTextField.getText())));
     }//GEN-LAST:event_regionFilterButtonActionPerformed
     
     private void resultOnClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resultOnClick
-        // TODO add your handling code here:
-        Plant plant = (Plant)this.regionSearchResults.getSelectedValue();
-        this.loadData(plant);
+        //update specimen
+        SpecimenRegion r = (SpecimenRegion)this.regionSearchResults.getSelectedValue();
+        Plant p = (Plant)this.plantSearchResults.getSelectedValue();
+        this.specimenSearchResults.setModel(toListModel(DBC.getSpecimens(r,p)));
         
     }//GEN-LAST:event_resultOnClick
 
@@ -319,7 +321,10 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_regionSearchTextFieldActionPerformed
 
     private void plantSearchResultsresultOnClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plantSearchResultsresultOnClick
-        // TODO add your handling code here:
+        // update specimens
+        SpecimenRegion r = (SpecimenRegion)this.regionSearchResults.getSelectedValue();
+        Plant p = (Plant)this.plantSearchResults.getSelectedValue();
+        this.specimenSearchResults.setModel(toListModel(DBC.getSpecimens(r,p)));
     }//GEN-LAST:event_plantSearchResultsresultOnClick
 
     private void plantSearchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plantSearchTextFieldActionPerformed
@@ -327,7 +332,8 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_plantSearchTextFieldActionPerformed
 
     private void plantFilterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plantFilterButtonActionPerformed
-        // TODO add your handling code here:
+        String filter = this.plantSearchTextField.getText();
+        this.plantSearchResults.setModel(toListModel(DBC.getPlants(filter)));
     }//GEN-LAST:event_plantFilterButtonActionPerformed
 
     private void specimenSearchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_specimenSearchTextFieldActionPerformed
@@ -335,7 +341,9 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_specimenSearchTextFieldActionPerformed
 
     private void specimenFilterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_specimenFilterButtonActionPerformed
-        // TODO add your handling code here:
+        SpecimenRegion r = (SpecimenRegion)this.regionSearchResults.getSelectedValue();
+        Plant p = (Plant)this.plantSearchResults.getSelectedValue();
+        this.specimenSearchResults.setModel(toListModel(DBC.getSpecimens(r,p)));
     }//GEN-LAST:event_specimenFilterButtonActionPerformed
 
     private void specimenSearchResultsresultOnClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_specimenSearchResultsresultOnClick

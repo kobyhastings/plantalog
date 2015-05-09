@@ -6,7 +6,9 @@
 
 package plantalog.models;
 
+import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -18,11 +20,24 @@ public class Specimen extends Model {
     public String notes;
     public double latitude;
     public double longitude;
-    public String when_added;
+    public Date when_added;
     public String lives_in;
 
     @Override
     public void fromResultSet(ResultSet r) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        
+        try{
+            this.plant_id = r.getString("plant_id");
+            this.specimen_id = r.getString("specimen_id");
+            this.notes = r.getString("notes");
+            this.latitude = r.getFloat("latitude");
+            this.longitude = r.getFloat("longitude");
+            this.when_added = r.getDate("when_added");
+            this.lives_in = r.getString("lives_in");
+        }catch(SQLException oops)
+        {
+            oops.printStackTrace();
+        }
     }
 }

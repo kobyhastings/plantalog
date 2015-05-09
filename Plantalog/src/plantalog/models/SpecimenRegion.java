@@ -7,6 +7,7 @@
 package plantalog.models;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -18,6 +19,18 @@ public class SpecimenRegion extends Model {
 
     @Override
     public void fromResultSet(ResultSet r) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        try{
+            this.description = r.getString("description");
+            this.region_name = r.getString("region_name");
+        }catch(SQLException oops)
+        {
+            oops.printStackTrace();
+        }
+    }
+    
+    @Override
+    public String toString(){
+        return this.region_name;
     }
 }
