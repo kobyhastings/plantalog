@@ -323,24 +323,16 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="specimenNotes" alignment="0" min="-2" pref="282" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
-                              <Component id="search" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="specimenNotes" alignment="0" min="-2" pref="282" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="plantNotes" alignment="0" min="-2" pref="282" max="-2" attributes="0"/>
-                                          <Component id="specimenName" alignment="0" min="-2" pref="303" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="121" max="32767" attributes="0"/>
-                                      <Component id="mainImage" min="-2" pref="157" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="plantNotes" alignment="0" min="-2" pref="282" max="-2" attributes="0"/>
+                                  <Component id="specimenName" alignment="0" min="-2" pref="303" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace pref="121" max="32767" attributes="0"/>
+                              <Component id="mainImage" min="-2" pref="157" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
@@ -350,9 +342,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="search" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                      <EmptySpace pref="86" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="specimenName" min="-2" pref="17" max="-2" attributes="0"/>
@@ -381,15 +371,6 @@
             </Component>
             <Component class="javax.swing.JLabel" name="plantNotes">
             </Component>
-            <Component class="javax.swing.JButton" name="search">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Search New"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JLabel" name="mainImage">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
@@ -416,6 +397,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="logo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="search" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="greeting" min="-2" pref="88" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -434,6 +417,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="search" min="-2" max="-2" attributes="0"/>
                       <Component id="logoutButton" min="-2" max="-2" attributes="0"/>
                       <Component id="greeting" min="-2" pref="21" max="-2" attributes="0"/>
                   </Group>
@@ -461,6 +445,18 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="logoutButton.setVisible(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="search">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Search New"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="search.setVisible(false);"/>
           </AuxValues>
         </Component>
       </SubComponents>
