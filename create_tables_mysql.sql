@@ -5,7 +5,7 @@ Authors: Aaron Eisenberg
 Date: 5/7/15
 */
 
-drop database Plantalog;
+drop database if exists Plantalog;
 create database Plantalog;
 
 use Plantalog;
@@ -60,6 +60,5 @@ create table PlantImage (
 	constraint plant_id_exists foreign key(plant_id) references Plant(plant_id) on delete cascade
 );
 
-CREATE USER plantalog IDENTIFIED BY 'plantalogpw'; 
 grant usage on *.* to plantalog@localhost identified by 'plantalogpw'; 
 grant all privileges on Plantalog.* to plantalog@localhost;
