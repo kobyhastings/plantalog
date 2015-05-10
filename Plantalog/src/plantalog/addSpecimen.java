@@ -148,6 +148,10 @@ public class addSpecimen extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        if(latField.getText().isEmpty())
+            latField.setText("0");
+        if(longField.getText().isEmpty())
+            longField.setText("0");
         Specimen.add(
                 (Plant)plantComboBox.getSelectedItem(), 
                 (SpecimenRegion)regionComboBox.getSelectedItem(), 
@@ -161,6 +165,7 @@ public class addSpecimen extends javax.swing.JPanel {
         longField.setText("");
         
         Plantalog.main.setCard("search");
+        Plantalog.main.refreshSpecimenSearchPane();
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void latFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_latFieldActionPerformed
