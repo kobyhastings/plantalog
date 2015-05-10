@@ -112,4 +112,11 @@ public class Specimen extends Model {
         }
         return specimens;
     }
+    
+    public static void add(Plant p, SpecimenRegion r, String notes, double latitude, double longitude){
+        String id = "";
+        for(int i = 0; i < 9; i++)
+            id += (char)((int)(Math.random()*10) + '0');
+        DBC.execute("insert into Specimen (plant_id, specimen_id, notes, latitude, longitude, lives_in) values (\"" + p.plant_id + "\", \""+ id + "\", \""+ notes + "\", "+ latitude + ", "+ longitude + ", \""+ r.region_name + "\")");
+    }
 }

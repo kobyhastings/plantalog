@@ -37,7 +37,7 @@ create table Specimen (
 	notes text,
 	latitude float(9,6) check((latitude > -90) AND (latitude < 90)),
 	longitude float(9,6) check((longitude > -180) AND (longitude < 180)),
-	when_added timestamp,
+	when_added timestamp DEFAULT CURRENT_TIMESTAMP,
 	lives_in varchar(25),
 	primary key(plant_id, specimen_id),
 	constraint lives_in_exists foreign key(lives_in) references SpecimenRegion(region_name) on delete set null

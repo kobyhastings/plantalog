@@ -67,12 +67,16 @@ public class MainFrame extends javax.swing.JFrame {
         ImageListScrollPane = new javax.swing.JScrollPane();
         imagesList = new javax.swing.JList();
         mainImageCaption = new javax.swing.JLabel();
+        addPlant = new plantalog.addPlant();
+        addSpecimen = new plantalog.addSpecimen();
         header = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         greeting = new javax.swing.JLabel();
         logoutButton = new javax.swing.JButton();
         search = new javax.swing.JButton();
         addRegionButton = new javax.swing.JButton();
+        addPlantButton = new javax.swing.JButton();
+        addSpecimenButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -387,6 +391,8 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         cards.add(mainPanel, "main");
+        cards.add(addPlant, "addPlant");
+        cards.add(addSpecimen, "addSpecimen");
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
 
@@ -416,6 +422,25 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        addPlantButton.setText("Add Plant");
+        addPlantButton.setToolTipText("");
+        addPlantButton.setActionCommand("Add Region");
+        addPlantButton.setVisible(false);
+        addPlantButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPlantButtonActionPerformed(evt);
+            }
+        });
+
+        addSpecimenButton.setText("Add Specimen");
+        addSpecimenButton.setToolTipText("");
+        addSpecimenButton.setVisible(false);
+        addSpecimenButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addSpecimenButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
@@ -426,8 +451,12 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(search)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(addRegionButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(addRegionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addPlantButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addSpecimenButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(greeting, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(logoutButton)
@@ -435,16 +464,24 @@ public class MainFrame extends javax.swing.JFrame {
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(logo)
-                .addContainerGap())
-            .addGroup(headerLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                        .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addSpecimenButton)
+                            .addGroup(headerLayout.createSequentialGroup()
+                                .addComponent(addRegionButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(addPlantButton))
+                            .addComponent(logo))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
                         .addComponent(search)
-                        .addComponent(addRegionButton))
+                        .addGap(24, 24, 24))))
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(logoutButton)
                     .addComponent(greeting, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -506,6 +543,8 @@ public class MainFrame extends javax.swing.JFrame {
             
             if(Plantalog.currentUser.isEmployee()){ //show employee controls
                 addRegionButton.setVisible(true);
+                addPlantButton.setVisible(true);
+                addSpecimenButton.setVisible(true);
             }
         }
     }//GEN-LAST:event_loginButtonActionPerformed
@@ -547,6 +586,8 @@ public class MainFrame extends javax.swing.JFrame {
         
         if(Plantalog.currentUser.isEmployee()){ //hide admin if there
             addRegionButton.setVisible(false);
+            addPlantButton.setVisible(false);
+            addSpecimenButton.setVisible(false);
         }
         Plantalog.currentUser = null;
         logoutButton.setVisible(false);
@@ -579,6 +620,15 @@ public class MainFrame extends javax.swing.JFrame {
         refreshRegionSearchPane();
     }//GEN-LAST:event_addRegionSaveButtonActionPerformed
 
+    private void addPlantButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPlantButtonActionPerformed
+        setCard("addPlant");
+    }//GEN-LAST:event_addPlantButtonActionPerformed
+
+    private void addSpecimenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSpecimenButtonActionPerformed
+        this.addSpecimen.refresh();
+        setCard("addSpecimen");
+    }//GEN-LAST:event_addSpecimenButtonActionPerformed
+
     /**
      * Load data for a specimen in the main frame
      * 
@@ -595,7 +645,7 @@ public class MainFrame extends javax.swing.JFrame {
             mainImage.setText("No images available");
             
         }
-        this.imagesList.setModel(toListModel(s.plant.images));
+        this.imagesList.setModel(Plantalog.toListModel(s.plant.images));
         DBC.view(s, Plantalog.currentUser);
     }
     
@@ -620,27 +670,20 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }
     
-    private void refreshRegionSearchPane(){
-        this.regionSearchResults.setModel(toListModel(SpecimenRegion.getRegions(this.regionSearchTextField.getText())));
+    public void refreshRegionSearchPane(){
+        this.regionSearchResults.setModel(Plantalog.toListModel(SpecimenRegion.getRegions(this.regionSearchTextField.getText())));
     }
-    private void refreshPlantSearchPane(){
-        this.plantSearchResults.setModel(toListModel(Plant.getPlants(this.plantSearchTextField.getText())));
+    public void refreshPlantSearchPane(){
+        this.plantSearchResults.setModel(Plantalog.toListModel(Plant.getPlants(this.plantSearchTextField.getText())));
     }
-    private void refreshSpecimenSearchPane(){
+    public void refreshSpecimenSearchPane(){
         SpecimenRegion r = (SpecimenRegion)this.regionSearchResults.getSelectedValue();
         Plant p = (Plant)this.plantSearchResults.getSelectedValue();
-        this.specimenSearchResults.setModel(toListModel(Specimen.getSpecimens(r,p)));
+        this.specimenSearchResults.setModel(Plantalog.toListModel(Specimen.getSpecimens(r,p)));
     }
     
-    private void setCard(String cardname){
+    public void setCard(String cardname){
         ((CardLayout)this.cards.getLayout()).show(this.cards, cardname);        
-    }
-    
-    private <T> DefaultListModel<T> toListModel(ArrayList<T> list){
-        DefaultListModel<T> l = new DefaultListModel();
-        for(T t: list)
-            l.addElement(t);
-        return l;
     }
     public static void start() {
         /* Set the Nimbus look and feel */
@@ -679,17 +722,22 @@ public class MainFrame extends javax.swing.JFrame {
                     }
                 });
                 m.setVisible(true);
+                Plantalog.main = m;
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ImageListScrollPane;
+    private plantalog.addPlant addPlant;
+    private javax.swing.JButton addPlantButton;
     private javax.swing.JPanel addRegion;
     private javax.swing.JButton addRegionButton;
     private javax.swing.JTextArea addRegionDescTextArea;
     private javax.swing.JTextField addRegionNameTextField;
     private javax.swing.JButton addRegionSaveButton;
+    private plantalog.addSpecimen addSpecimen;
+    private javax.swing.JButton addSpecimenButton;
     private javax.swing.JPanel cards;
     private javax.swing.JLabel greeting;
     private javax.swing.JPanel header;

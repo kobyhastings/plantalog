@@ -25,7 +25,7 @@ public class User extends Model{
     public String password;
     public String email;
     public Date user_since;
-    public char user_type;
+    public String user_type;
 
     @Override
     public ArrayList<User> parseResultSet(ResultSet r) {
@@ -41,7 +41,9 @@ public class User extends Model{
                 m.name = r.getString("name");
                 m.user_id = r.getString("user_id");
                 m.user_since = r.getDate("user_since");
-                m.user_type = r.getString("user_type").charAt(0);
+                m.user_type = r.getString("user_type");
+                if(m.user_type == null)
+                    m.user_type = "";
                 results.add(m);
             }
         }catch(SQLException oops)
@@ -52,7 +54,7 @@ public class User extends Model{
     }
     
     public boolean isEmployee(){
-        return user_type == 'E';
+        return user_type.equals("E");
     }
     
     public static User get(String id) {

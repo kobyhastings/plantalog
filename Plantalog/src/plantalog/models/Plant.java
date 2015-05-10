@@ -96,4 +96,11 @@ public class Plant extends Model {
                 "plant_id = '" + p.plant_id + "'", new PlantImage());
         return plants;
     }
+    
+    public static void add(String cultivar, String sci_name, String comm_name, String notes){
+        String id = "";
+        for(int i = 0; i < 9; i++)
+            id += (char)((int)(Math.random()*10) + '0');
+        DBC.execute("insert into Plant values (\"" + id + "\", \""+ cultivar + "\", \""+ sci_name + "\", \""+ comm_name + "\", \""+ notes + "\")");
+    }
 }

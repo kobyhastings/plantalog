@@ -47,6 +47,7 @@ public class DBC {
     }
     
     public static void execute(String query){
+        System.out.println("executing "+ query);
         Statement s = null;
         try {
             s = conn.createStatement();
