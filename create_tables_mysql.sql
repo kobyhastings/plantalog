@@ -5,10 +5,10 @@ Authors: Aaron Eisenberg
 Date: 5/7/15
 */
 
-drop database if exists Plantalog;
-create database Plantalog;
+drop database if exists plantalog;
+create database plantalog;
 
-use Plantalog;
+use plantalog;
 
 create table Users (
 	user_id char(9) primary key,
@@ -60,5 +60,5 @@ create table PlantImage (
 	constraint plant_id_exists foreign key(plant_id) references Plant(plant_id) on delete cascade
 );
 
-grant usage on *.* to plantalog@localhost identified by 'plantalogpw'; 
-grant all privileges on Plantalog.* to plantalog@localhost;
+-- grant usage on *.* to plantalog@localhost identified by 'plantalogpw'; 
+-- grant all privileges on Plantalog.* to plantalog@localhost;

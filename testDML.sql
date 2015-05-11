@@ -1,4 +1,4 @@
-use Plantalog;
+use plantalog;
 
 /*users*/
 insert into Users values ("1","simon","simon","simon@simon.com","2015-05-02 08:00:00", "E");
