@@ -79,6 +79,8 @@ public class MainFrame extends javax.swing.JFrame {
         addSpecimenButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Plantlog - Plant Catalog");
+        setIconImage((new javax.swing.ImageIcon(getClass().getResource("/plantalog/plantalog.png"))).getImage());
 
         cards.setLayout(new java.awt.CardLayout());
 
