@@ -14,6 +14,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import plantalog.DBC;
+import com.cloudinary.*;
+import com.cloudinary.utils.ObjectUtils;
+import com.cloudinary.http44.*;
+import java.io.File;
+import java.util.Map;
+import plantalog.PlantalogHelper;
 
 /**
  *
@@ -29,6 +35,11 @@ public class PlantImage extends Model {
     
     public Image image;
     public Plant plant;
+    
+//    Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
+//        "cloud_name", "plantalog",
+//        "api_key", "649713167377134",
+//        "api_secret", "dzmj_KJaiAH5zMeCuGalMQ-9k5Y"));
 
     @Override
     public ArrayList<PlantImage> parseResultSet(ResultSet r) {
@@ -61,7 +72,7 @@ public class PlantImage extends Model {
     public Image getImage(){
         if(image == null)
             try{
-                image = ImageIO.read(new URL(this.path));
+                image = ImageIO.read(new URL("https://res.cloudinary.com/plantalog/image/upload/w_600,h_450,c_fill/" + this.path));
             }catch(IOException e){
             }
         return image;
@@ -90,5 +101,27 @@ public class PlantImage extends Model {
     }
     public static ArrayList<PlantImage> getAll(){
         return DBC.executeQuery("Select * from PlantImage;", new PlantImage());
+    }
+    
+    public static String add(File image, String plant_id, String caption) throws IOException {
+        String image_id = PlantalogHelper.generateRandomId();
+        
+        Map config = ObjectUtils.asMap(
+            "cloud_name", "plantalog",
+            "api_key", "649713167377134",
+            "api_secret", "dzmj_KJaiAH5zMeCuGalMQ-9k5Y");
+        Cloudinary cloudinary = new Cloudinary(config);
+        Map uploadResult = cloudinary.uploader().upload(image, ObjectUtils.emptyMap());
+        
+        String path = uploadResult.get("public_id") + "." + uploadResult.get("format");
+        DBC.execute(
+                "insert into PlantImage values ("
+                        + "\"" + plant_id + "\", "
+                        + "\""+ image_id + "\", "
+                        + "\""+ path + "\", "
+                        + "\""+ caption + "\")"
+        );
+        
+        return image_id;
     }
 }
