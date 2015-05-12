@@ -39,6 +39,7 @@ public class MainFrame extends javax.swing.JFrame {
         usernameField = new javax.swing.JTextField();
         passwordField = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
+        addUser = new plantalog.addUser();
         addRegion = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         addRegionNameTextField = new javax.swing.JTextField();
@@ -77,6 +78,7 @@ public class MainFrame extends javax.swing.JFrame {
         addRegionButton = new javax.swing.JButton();
         addPlantButton = new javax.swing.JButton();
         addSpecimenButton = new javax.swing.JButton();
+        addUserButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Plantlog - Plant Catalog");
@@ -146,6 +148,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         cards.add(loginPanel, "login");
+        cards.add(addUser, "addUser");
 
         jLabel1.setText("Add Region");
 
@@ -443,6 +446,15 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        addUserButton.setText("Add User");
+        addUserButton.setToolTipText("");
+        addUserButton.setVisible(false);
+        addUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addUserButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
@@ -457,8 +469,10 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(addRegionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(addPlantButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(addSpecimenButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(addSpecimenButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(greeting, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(logoutButton)
@@ -475,7 +489,9 @@ public class MainFrame extends javax.swing.JFrame {
                             .addGroup(headerLayout.createSequentialGroup()
                                 .addComponent(addRegionButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(addPlantButton))
+                                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(addPlantButton)
+                                    .addComponent(addUserButton)))
                             .addComponent(logo))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
@@ -498,7 +514,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cards, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addContainerGap(32, Short.MAX_VALUE))
                     .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -547,6 +563,7 @@ public class MainFrame extends javax.swing.JFrame {
                 addRegionButton.setVisible(true);
                 addPlantButton.setVisible(true);
                 addSpecimenButton.setVisible(true);
+                addUserButton.setVisible(true);
             }
         }
     }//GEN-LAST:event_loginButtonActionPerformed
@@ -586,11 +603,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         
-        if(Plantalog.currentUser.isEmployee()){ //hide admin if there
-            addRegionButton.setVisible(false);
-            addPlantButton.setVisible(false);
-            addSpecimenButton.setVisible(false);
-        }
+        addRegionButton.setVisible(false);
+        addPlantButton.setVisible(false);
+        addSpecimenButton.setVisible(false);
+        addUserButton.setVisible(false);
         Plantalog.currentUser = null;
         logoutButton.setVisible(false);
         search.setVisible(false);
@@ -630,6 +646,10 @@ public class MainFrame extends javax.swing.JFrame {
         this.addSpecimen.refresh();
         setCard("addSpecimen");
     }//GEN-LAST:event_addSpecimenButtonActionPerformed
+
+    private void addUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserButtonActionPerformed
+        setCard("addUser");
+    }//GEN-LAST:event_addUserButtonActionPerformed
 
     /**
      * Load data for a specimen in the main frame
@@ -740,6 +760,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton addRegionSaveButton;
     private plantalog.addSpecimen addSpecimen;
     private javax.swing.JButton addSpecimenButton;
+    private plantalog.addUser addUser;
+    private javax.swing.JButton addUserButton;
     private javax.swing.JPanel cards;
     private javax.swing.JLabel greeting;
     private javax.swing.JPanel header;

@@ -54,6 +54,8 @@ public class User extends Model{
     }
     
     public boolean isEmployee(){
+        if(user_type == null)
+            return false;
         return user_type.equals("E");
     }
     
@@ -86,5 +88,13 @@ public class User extends Model{
         if(users.size() > 0)
             return users.get(0);
         return null;
+    }
+    
+    public static void add(String username, String password, String email, String user_type){
+        String id = "";
+        for(int i = 0; i < 9; i++)
+            id += (char)((int)(Math.random()*10) + '0');
+        DBC.execute("insert into Users (user_id, name, password, email, user_type) values (\""+
+                id + "\", \""+username + "\", \""+ password + "\", \"" + email  + "\", \"" + user_type + "\")");
     }
 }

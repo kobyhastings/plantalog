@@ -12,10 +12,10 @@ use plantalog;
 
 create table Users (
 	user_id char(9) primary key,
-	name varchar(25),
+	name varchar(25) uniuqe,
 	password varchar(500),
 	email varchar(50),
-	user_since timestamp,
+	user_since timestamp DEFAULT CURRENT_TIMESTAMP,
 	user_type char(1)
 );
 
