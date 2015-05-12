@@ -15,7 +15,7 @@ create table Users (
 	name varchar(25),
 	password varchar(500),
 	email varchar(50),
-	user_since timestamp,
+	user_since timestamp DEFAULT CURRENT_TIMESTAMP,
 	user_type char(1)
 );
 
