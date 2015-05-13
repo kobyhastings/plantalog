@@ -82,10 +82,12 @@ public class MainFrame extends javax.swing.JFrame {
         addPlantButton = new javax.swing.JButton();
         addSpecimenButton = new javax.swing.JButton();
         addUserButton = new javax.swing.JButton();
+        statusBar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Plantlog - Plant Catalog");
         setIconImage((new javax.swing.ImageIcon(getClass().getResource("/plantalog/plantalog.png"))).getImage());
+        setMinimumSize(new java.awt.Dimension(747, 532));
 
         cards.setLayout(new java.awt.CardLayout());
 
@@ -416,6 +418,11 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         cards.add(mainPanel, "main");
+
+        addPlant.setFocusCycleRoot(true);
+        addPlant.setFocusTraversalPolicyProvider(true);
+        addPlant.setMinimumSize(null);
+        addPlant.setName(""); // NOI18N
         cards.add(addPlant, "addPlant");
         cards.add(addSpecimen, "addSpecimen");
 
@@ -525,6 +532,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        statusBar.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -532,10 +541,14 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cards, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(32, Short.MAX_VALUE))
-                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(statusBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cards, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 22, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -543,7 +556,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cards, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(statusBar, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -585,6 +600,10 @@ public class MainFrame extends javax.swing.JFrame {
                 addSpecimenButton.setVisible(true);
                 addUserButton.setVisible(true);
             }
+            Plantalog.main.setStatus("Logged in " + Plantalog.currentUser.name);
+        }else{
+            
+            Plantalog.main.setStatus("Error Logging in...");
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
@@ -717,6 +736,10 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }
     
+    public void setStatus(String status){
+        this.statusBar.setText(status);
+    }
+    
     public void refreshRegionSearchPane(){
         this.regionSearchResults.setModel(Plantalog.toListModel(SpecimenRegion.getRegions(this.regionSearchTextField.getText())));
     }
@@ -823,6 +846,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel specimenNotes;
     private javax.swing.JList specimenSearchResults;
     private javax.swing.JScrollPane specimenSearchResultsPane;
+    private javax.swing.JLabel statusBar;
     private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
