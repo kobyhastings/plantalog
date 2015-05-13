@@ -52,7 +52,6 @@ public class DBC {
     }
     
     public static void execute(String query){
-        Plantalog.main.setStatus("executing "+ query);
         Statement s = null;
         try {
             s = conn.createStatement();
@@ -64,7 +63,6 @@ public class DBC {
         }
     }
     public static <T extends Model> ArrayList<T> executeQuery(String query, T modelclass){
-        Plantalog.main.setStatus("executing "+ query);
         Statement s = null;
         ResultSet r = null;
         try {

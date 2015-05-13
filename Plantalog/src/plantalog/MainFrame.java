@@ -847,6 +847,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void specimenFilterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_specimenFilterButtonActionPerformed
         Specimen s = (Specimen)this.specimenSearchResults.getSelectedValue();
         if(s != null){
+            Plantalog.main.setStatus("Loading Data for " + s.plant.sci_name);
             loadData(s);
             setCard("main");
         }
@@ -957,6 +958,7 @@ public class MainFrame extends javax.swing.JFrame {
         }
         this.imagesList.setModel(Plantalog.toListModel(s.plant.images));
         DBC.view(s, Plantalog.currentUser);
+        Plantalog.main.setStatus("Loaded Data for " + s.plant.sci_name);
     }
     
     private void loadImage(JLabel label, PlantImage pi){
