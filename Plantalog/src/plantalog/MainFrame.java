@@ -62,6 +62,18 @@ public class MainFrame extends javax.swing.JFrame {
         specimenFilterButton = new javax.swing.JButton();
         specimenSearchResultsPane = new javax.swing.JScrollPane();
         specimenSearchResults = new javax.swing.JList();
+        regionActionsPanel = new javax.swing.JPanel();
+        regionActionsLabel = new javax.swing.JLabel();
+        deleteRegionButton = new javax.swing.JButton();
+        editRegionButton = new javax.swing.JButton();
+        plantActionsPanel = new javax.swing.JPanel();
+        plantActionsLabel = new javax.swing.JLabel();
+        editPlantButton = new javax.swing.JButton();
+        deletePlantButton = new javax.swing.JButton();
+        specimenActionsPanel = new javax.swing.JPanel();
+        specimenActionsLabel = new javax.swing.JLabel();
+        editSpecimenButton = new javax.swing.JButton();
+        deleteSpecimenButton = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
         specimenName = new javax.swing.JLabel();
         specimenNotes = new javax.swing.JLabel();
@@ -141,6 +153,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(usernameField)
                             .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+
                 .addContainerGap(287, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
@@ -214,7 +227,7 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addGroup(addRegionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jScrollPane1)
                                     .addComponent(addRegionNameTextField))))))
-                .addContainerGap(399, Short.MAX_VALUE))
+                .addContainerGap(487, Short.MAX_VALUE))
         );
         addRegionLayout.setVerticalGroup(
             addRegionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,6 +312,180 @@ public class MainFrame extends javax.swing.JFrame {
         });
         specimenSearchResultsPane.setViewportView(specimenSearchResults);
 
+        regionActionsPanel.setPreferredSize(new java.awt.Dimension(143, 100));
+        regionActionsPanel.setVisible(false);
+
+        regionActionsLabel.setText("Region Actions");
+        regionActionsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        regionActionsLabel.setMaximumSize(new java.awt.Dimension(112, 16));
+        regionActionsLabel.setMinimumSize(new java.awt.Dimension(112, 16));
+
+        deleteRegionButton.setText("Delete Region");
+        deleteRegionButton.setMaximumSize(new java.awt.Dimension(148, 29));
+        deleteRegionButton.setMinimumSize(new java.awt.Dimension(148, 29));
+        deleteRegionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteRegionButtonActionPerformed(evt);
+            }
+        });
+
+        editRegionButton.setText("Edit Region");
+        editRegionButton.setMaximumSize(new java.awt.Dimension(148, 29));
+        editRegionButton.setMinimumSize(new java.awt.Dimension(148, 29));
+        editRegionButton.setPreferredSize(new java.awt.Dimension(131, 29));
+        editRegionButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
+        editRegionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editRegionButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout regionActionsPanelLayout = new javax.swing.GroupLayout(regionActionsPanel);
+        regionActionsPanel.setLayout(regionActionsPanelLayout);
+        regionActionsPanelLayout.setHorizontalGroup(
+            regionActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(regionActionsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(regionActionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(regionActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(regionActionsPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(deleteRegionButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(regionActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(regionActionsPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(editRegionButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        regionActionsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {deleteRegionButton, editRegionButton, regionActionsLabel});
+
+        regionActionsPanelLayout.setVerticalGroup(
+            regionActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(regionActionsPanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(regionActionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(69, Short.MAX_VALUE))
+            .addGroup(regionActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, regionActionsPanelLayout.createSequentialGroup()
+                    .addContainerGap(65, Short.MAX_VALUE)
+                    .addComponent(deleteRegionButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
+            .addGroup(regionActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(regionActionsPanelLayout.createSequentialGroup()
+                    .addGap(35, 35, 35)
+                    .addComponent(editRegionButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(36, Short.MAX_VALUE)))
+        );
+
+        plantActionsPanel.setVisible(false);
+
+        plantActionsLabel.setText("Plant Actions");
+        plantActionsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        plantActionsLabel.setMaximumSize(new java.awt.Dimension(112, 16));
+        plantActionsLabel.setMinimumSize(new java.awt.Dimension(112, 16));
+        plantActionsLabel.setPreferredSize(new java.awt.Dimension(95, 16));
+
+        editPlantButton.setText("Edit Plant");
+        editPlantButton.setMaximumSize(new java.awt.Dimension(148, 29));
+        editPlantButton.setMinimumSize(new java.awt.Dimension(148, 29));
+        editPlantButton.setPreferredSize(new java.awt.Dimension(131, 29));
+        editPlantButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
+        editPlantButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editPlantButtonActionPerformed(evt);
+            }
+        });
+
+        deletePlantButton.setText("Delete Plant");
+        deletePlantButton.setMaximumSize(new java.awt.Dimension(148, 29));
+        deletePlantButton.setMinimumSize(new java.awt.Dimension(148, 29));
+        deletePlantButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletePlantButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout plantActionsPanelLayout = new javax.swing.GroupLayout(plantActionsPanel);
+        plantActionsPanel.setLayout(plantActionsPanelLayout);
+        plantActionsPanelLayout.setHorizontalGroup(
+            plantActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plantActionsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(plantActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(plantActionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editPlantButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deletePlantButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        plantActionsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {deletePlantButton, editPlantButton, plantActionsLabel});
+
+        plantActionsPanelLayout.setVerticalGroup(
+            plantActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plantActionsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(plantActionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editPlantButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deletePlantButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        specimenActionsPanel.setPreferredSize(new java.awt.Dimension(143, 100));
+        specimenActionsPanel.setVisible(false);
+
+        specimenActionsLabel.setText("Specimen Actions");
+        specimenActionsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        specimenActionsLabel.setPreferredSize(new java.awt.Dimension(95, 16));
+
+        editSpecimenButton.setText("Edit Specimen");
+        editSpecimenButton.setMaximumSize(new java.awt.Dimension(148, 29));
+        editSpecimenButton.setMinimumSize(new java.awt.Dimension(148, 29));
+        editSpecimenButton.setPreferredSize(new java.awt.Dimension(131, 29));
+        editSpecimenButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
+        editSpecimenButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editSpecimenButtonActionPerformed(evt);
+            }
+        });
+
+        deleteSpecimenButton.setText("Delete Specimen");
+        deleteSpecimenButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteSpecimenButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout specimenActionsPanelLayout = new javax.swing.GroupLayout(specimenActionsPanel);
+        specimenActionsPanel.setLayout(specimenActionsPanelLayout);
+        specimenActionsPanelLayout.setHorizontalGroup(
+            specimenActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(specimenActionsPanelLayout.createSequentialGroup()
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addGroup(specimenActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(specimenActionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteSpecimenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editSpecimenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        specimenActionsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {deleteSpecimenButton, editSpecimenButton, specimenActionsLabel});
+
+        specimenActionsPanelLayout.setVerticalGroup(
+            specimenActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(specimenActionsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(specimenActionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editSpecimenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(deleteSpecimenButton)
+                .addContainerGap(7, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
         searchPanelLayout.setHorizontalGroup(
@@ -320,10 +507,21 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(plantSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(specimenSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(specimenFilterButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(searchPanelLayout.createSequentialGroup()
+                        .addComponent(specimenFilterButton)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, searchPanelLayout.createSequentialGroup()
+                        .addComponent(specimenSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 32, Short.MAX_VALUE)
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(plantActionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(regionActionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(specimenActionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25))))
         );
+
+        searchPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {plantActionsPanel, regionActionsPanel, specimenActionsPanel});
+
         searchPanelLayout.setVerticalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchPanelLayout.createSequentialGroup()
@@ -342,9 +540,18 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(searchPanelLayout.createSequentialGroup()
                         .addComponent(specimenFilterButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(specimenSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(searchPanelLayout.createSequentialGroup()
+                                .addComponent(regionActionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(plantActionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(specimenActionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(specimenSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
+
+        searchPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {plantActionsPanel, regionActionsPanel, specimenActionsPanel});
 
         cards.add(searchPanel, "search");
 
@@ -390,7 +597,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(ImageListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(mainImageCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)))
+                        .addComponent(mainImageCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
@@ -534,7 +741,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cards, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(32, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -556,6 +763,9 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_regionFilterButtonActionPerformed
     
     private void resultOnClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resultOnClick
+        refreshRegionActionButtons(true);
+        refreshPlantActionButtons(false);
+        refreshSpecimenActionButtons(false);
         refreshPlantSearchPane();
         refreshSpecimenSearchPane();
     }//GEN-LAST:event_resultOnClick
@@ -593,6 +803,8 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_regionSearchTextFieldActionPerformed
 
     private void plantSearchResultsresultOnClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plantSearchResultsresultOnClick
+        refreshPlantActionButtons(true);
+        refreshSpecimenActionButtons(false);
         refreshSpecimenSearchPane();
     }//GEN-LAST:event_plantSearchResultsresultOnClick
 
@@ -614,7 +826,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_specimenFilterButtonActionPerformed
 
     private void specimenSearchResultsresultOnClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_specimenSearchResultsresultOnClick
-        // TODO add your handling code here:
+        refreshSpecimenActionButtons(true);
     }//GEN-LAST:event_specimenSearchResultsresultOnClick
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
@@ -675,6 +887,30 @@ public class MainFrame extends javax.swing.JFrame {
         setCard("registerNewUser");
     }//GEN-LAST:event_registerButtonActionPerformed
 
+    private void deleteRegionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteRegionButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteRegionButtonActionPerformed
+
+    private void editRegionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editRegionButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editRegionButtonActionPerformed
+
+    private void editPlantButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPlantButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editPlantButtonActionPerformed
+
+    private void deletePlantButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePlantButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deletePlantButtonActionPerformed
+
+    private void editSpecimenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSpecimenButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editSpecimenButtonActionPerformed
+
+    private void deleteSpecimenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSpecimenButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteSpecimenButtonActionPerformed
+
     /**
      * Load data for a specimen in the main frame
      * 
@@ -715,6 +951,16 @@ public class MainFrame extends javax.swing.JFrame {
                 }
             }
         });
+    }
+    
+    public void refreshRegionActionButtons(boolean x) {
+        this.regionActionsPanel.setVisible(x);
+    }
+    public void refreshPlantActionButtons(boolean x) {
+        this.plantActionsPanel.setVisible(x);
+    }
+    public void refreshSpecimenActionButtons(boolean x) {
+        this.specimenActionsPanel.setVisible(x);
     }
     
     public void refreshRegionSearchPane(){
@@ -788,6 +1034,12 @@ public class MainFrame extends javax.swing.JFrame {
     private plantalog.addUser addUser;
     private javax.swing.JButton addUserButton;
     private javax.swing.JPanel cards;
+    private javax.swing.JButton deletePlantButton;
+    private javax.swing.JButton deleteRegionButton;
+    private javax.swing.JButton deleteSpecimenButton;
+    private javax.swing.JButton editPlantButton;
+    private javax.swing.JButton editRegionButton;
+    private javax.swing.JButton editSpecimenButton;
     private javax.swing.JLabel greeting;
     private javax.swing.JPanel header;
     private javax.swing.JList imagesList;
@@ -805,11 +1057,15 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel numViews;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
+    private javax.swing.JLabel plantActionsLabel;
+    private javax.swing.JPanel plantActionsPanel;
     private javax.swing.JButton plantFilterButton;
     private javax.swing.JLabel plantNotes;
     private javax.swing.JList plantSearchResults;
     private javax.swing.JScrollPane plantSearchResultsPane;
     private javax.swing.JTextField plantSearchTextField;
+    private javax.swing.JLabel regionActionsLabel;
+    private javax.swing.JPanel regionActionsPanel;
     private javax.swing.JButton regionFilterButton;
     private javax.swing.JList regionSearchResults;
     private javax.swing.JScrollPane regionSearchResultsPane;
@@ -818,6 +1074,8 @@ public class MainFrame extends javax.swing.JFrame {
     private plantalog.registerNewUser registerNewUser;
     private javax.swing.JButton search;
     private javax.swing.JPanel searchPanel;
+    private javax.swing.JLabel specimenActionsLabel;
+    private javax.swing.JPanel specimenActionsPanel;
     private javax.swing.JButton specimenFilterButton;
     private javax.swing.JLabel specimenName;
     private javax.swing.JLabel specimenNotes;
