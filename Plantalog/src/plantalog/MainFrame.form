@@ -142,19 +142,22 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="usernameField">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Enter your username"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernameFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JPasswordField" name="passwordField">
               <Properties>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="Enter your password"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="loginButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Login"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="Press to login"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginButtonActionPerformed"/>
@@ -166,7 +169,7 @@
             <Component class="javax.swing.JButton" name="registerButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Register"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="Press to register a new user"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerButtonActionPerformed"/>
@@ -255,6 +258,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="addRegionNameTextField">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Enter the name of the region"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addRegionNameTextFieldActionPerformed"/>
               </Events>
@@ -279,6 +285,7 @@
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Enter the description of the region"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -295,7 +302,7 @@
             <Component class="javax.swing.JButton" name="addRegionSaveButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Save"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="Press to save region"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addRegionSaveButtonActionPerformed"/>
@@ -505,9 +512,6 @@
                   <Dimension value="[143, 100]"/>
                 </Property>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="regionActionsPanel.setVisible(false);"/>
-              </AuxValues>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -515,7 +519,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="regionActionsLabel" linkSize="3" min="-2" pref="131" max="-2" attributes="0"/>
-                          <EmptySpace pref="14" max="32767" attributes="0"/>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -538,7 +542,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="regionActionsLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="73" max="32767" attributes="0"/>
+                          <EmptySpace pref="71" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
@@ -604,9 +608,6 @@
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="plantActionsPanel">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="plantActionsPanel.setVisible(false);"/>
-              </AuxValues>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -618,7 +619,7 @@
                               <Component id="editPlantButton" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="deletePlantButton" linkSize="4" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="14" max="32767" attributes="0"/>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -631,7 +632,7 @@
                           <Component id="editPlantButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="deletePlantButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="10" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -691,20 +692,18 @@
                   <Dimension value="[143, 100]"/>
                 </Property>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="specimenActionsPanel.setVisible(false);"/>
-              </AuxValues>
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="23" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="specimenActionsLabel" linkSize="5" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
+                              <Component id="specimenActionsLabel" linkSize="5" min="-2" pref="132" max="-2" attributes="0"/>
                               <Component id="deleteSpecimenButton" linkSize="5" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
                               <Component id="editSpecimenButton" linkSize="5" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -713,11 +712,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="specimenActionsLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="editSpecimenButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                          <Component id="editSpecimenButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="deleteSpecimenButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="9" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

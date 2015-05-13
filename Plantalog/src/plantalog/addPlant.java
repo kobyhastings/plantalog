@@ -54,10 +54,13 @@ public class addPlant extends javax.swing.JPanel {
 
         jLabel1.setText("Add Plant");
 
+        sci_nameField.setToolTipText("Enter the scientific name of the plant");
+
         jLabel2.setText("Scientific Name");
 
         jLabel3.setText("Common Name");
 
+        cultivarField.setToolTipText("Enter the cultivar of the plant");
         cultivarField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cultivarFieldActionPerformed(evt);
@@ -66,14 +69,17 @@ public class addPlant extends javax.swing.JPanel {
 
         jLabel4.setText("Cultivar");
 
+        com_nameField.setToolTipText("Enter the common name of the plant");
+
         jLabel5.setText("Notes");
 
         notesField.setColumns(18);
         notesField.setRows(4);
+        notesField.setToolTipText("Enter any notes relating to the plant");
         jScrollPane1.setViewportView(notesField);
 
         saveButton.setText("Save");
-        saveButton.setToolTipText("");
+        saveButton.setToolTipText("Press to save plant");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
@@ -83,6 +89,7 @@ public class addPlant extends javax.swing.JPanel {
         jLabel6.setText("Image");
 
         plantImageChooser.setText("Select image...");
+        plantImageChooser.setToolTipText("Press to select an image to upload");
         plantImageChooser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 plantImageChooserMouseClicked(evt);
@@ -96,6 +103,7 @@ public class addPlant extends javax.swing.JPanel {
 
         jLabel7.setText("Image Caption");
 
+        imageCaption.setToolTipText("Enter a caption for the image (if adding an image)");
         imageCaption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imageCaptionActionPerformed(evt);

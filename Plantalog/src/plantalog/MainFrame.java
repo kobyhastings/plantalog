@@ -116,16 +116,17 @@ public class MainFrame extends javax.swing.JFrame {
 
         passwordLabel.setText("Password");
 
+        usernameField.setToolTipText("Enter your username");
         usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameFieldActionPerformed(evt);
             }
         });
 
-        passwordField.setToolTipText("");
+        passwordField.setToolTipText("Enter your password");
 
         loginButton.setText("Login");
-        loginButton.setToolTipText("");
+        loginButton.setToolTipText("Press to login");
         getRootPane().setDefaultButton(loginButton);
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +135,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         registerButton.setText("Register");
-        registerButton.setToolTipText("");
+        registerButton.setToolTipText("Press to register a new user");
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerButtonActionPerformed(evt);
@@ -187,6 +188,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Add Region");
 
+        addRegionNameTextField.setToolTipText("Enter the name of the region");
         addRegionNameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addRegionNameTextFieldActionPerformed(evt);
@@ -199,6 +201,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         addRegionDescTextArea.setColumns(20);
         addRegionDescTextArea.setRows(5);
+        addRegionDescTextArea.setToolTipText("Enter the description of the region");
         jScrollPane1.setViewportView(addRegionDescTextArea);
 
         jLabel3.setLabelFor(addRegionDescTextArea);
@@ -206,7 +209,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel3.setToolTipText("");
 
         addRegionSaveButton.setText("Save");
-        addRegionSaveButton.setToolTipText("");
+        addRegionSaveButton.setToolTipText("Press to save region");
         addRegionSaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addRegionSaveButtonActionPerformed(evt);
@@ -320,7 +323,6 @@ public class MainFrame extends javax.swing.JFrame {
         specimenSearchResultsPane.setViewportView(specimenSearchResults);
 
         regionActionsPanel.setPreferredSize(new java.awt.Dimension(143, 100));
-        regionActionsPanel.setVisible(false);
 
         regionActionsLabel.setText("Region Actions");
         regionActionsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -353,7 +355,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(regionActionsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(regionActionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(regionActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(regionActionsPanelLayout.createSequentialGroup()
                     .addContainerGap()
@@ -373,7 +375,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(regionActionsPanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(regionActionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
             .addGroup(regionActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, regionActionsPanelLayout.createSequentialGroup()
                     .addContainerGap(65, Short.MAX_VALUE)
@@ -385,8 +387,6 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(editRegionButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(36, Short.MAX_VALUE)))
         );
-
-        plantActionsPanel.setVisible(false);
 
         plantActionsLabel.setText("Plant Actions");
         plantActionsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -423,7 +423,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(plantActionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editPlantButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deletePlantButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         plantActionsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {deletePlantButton, editPlantButton, plantActionsLabel});
@@ -437,11 +437,10 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(editPlantButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deletePlantButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         specimenActionsPanel.setPreferredSize(new java.awt.Dimension(143, 100));
-        specimenActionsPanel.setVisible(false);
 
         specimenActionsLabel.setText("Specimen Actions");
         specimenActionsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -469,11 +468,12 @@ public class MainFrame extends javax.swing.JFrame {
         specimenActionsPanelLayout.setHorizontalGroup(
             specimenActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(specimenActionsPanelLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(specimenActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(specimenActionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteSpecimenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editSpecimenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(editSpecimenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 17, Short.MAX_VALUE))
         );
 
         specimenActionsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {deleteSpecimenButton, editSpecimenButton, specimenActionsLabel});
@@ -483,9 +483,9 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(specimenActionsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(specimenActionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(editSpecimenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
+                .addComponent(editSpecimenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deleteSpecimenButton)
                 .addContainerGap(9, Short.MAX_VALUE))
         );
@@ -796,9 +796,6 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_regionFilterButtonActionPerformed
     
     private void resultOnClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resultOnClick
-        refreshRegionActionButtons(true);
-        refreshPlantActionButtons(false);
-        refreshSpecimenActionButtons(false);
         refreshPlantSearchPane();
         refreshSpecimenSearchPane();
     }//GEN-LAST:event_resultOnClick
@@ -840,8 +837,6 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_regionSearchTextFieldActionPerformed
 
     private void plantSearchResultsresultOnClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plantSearchResultsresultOnClick
-        refreshPlantActionButtons(true);
-        refreshSpecimenActionButtons(false);
         refreshSpecimenSearchPane();
     }//GEN-LAST:event_plantSearchResultsresultOnClick
 
@@ -864,7 +859,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_specimenFilterButtonActionPerformed
 
     private void specimenSearchResultsresultOnClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_specimenSearchResultsresultOnClick
-        refreshSpecimenActionButtons(true);
+        
     }//GEN-LAST:event_specimenSearchResultsresultOnClick
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
@@ -1013,15 +1008,6 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }
     
-    public void refreshRegionActionButtons(boolean x) {
-        this.regionActionsPanel.setVisible(x);
-    }
-    public void refreshPlantActionButtons(boolean x) {
-        this.plantActionsPanel.setVisible(x);
-    }
-    public void refreshSpecimenActionButtons(boolean x) {
-        this.specimenActionsPanel.setVisible(x);
-    }
     public void setStatus(String status){
         this.statusBar.setText(status);
     }

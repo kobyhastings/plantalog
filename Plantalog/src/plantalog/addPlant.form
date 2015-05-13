@@ -118,6 +118,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="sci_nameField">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Enter the scientific name of the plant"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -130,6 +133,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cultivarField">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Enter the cultivar of the plant"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cultivarFieldActionPerformed"/>
       </Events>
@@ -140,6 +146,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="com_nameField">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Enter the common name of the plant"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -157,6 +166,7 @@
           <Properties>
             <Property name="columns" type="int" value="18"/>
             <Property name="rows" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" value="Enter any notes relating to the plant"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -164,7 +174,7 @@
     <Component class="javax.swing.JButton" name="saveButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Save"/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="toolTipText" type="java.lang.String" value="Press to save plant"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveButtonActionPerformed"/>
@@ -178,6 +188,7 @@
     <Component class="javax.swing.JButton" name="plantImageChooser">
       <Properties>
         <Property name="text" type="java.lang.String" value="Select image..."/>
+        <Property name="toolTipText" type="java.lang.String" value="Press to select an image to upload"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="plantImageChooserMouseClicked"/>
@@ -190,6 +201,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="imageCaption">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Enter a caption for the image (if adding an image)"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imageCaptionActionPerformed"/>
       </Events>

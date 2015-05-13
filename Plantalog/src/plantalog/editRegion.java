@@ -48,7 +48,7 @@ public class editRegion extends javax.swing.JPanel {
         jLabel5.setText("Description");
 
         saveButton.setText("Save");
-        saveButton.setToolTipText("");
+        saveButton.setToolTipText("Press to save changes made to region");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
@@ -57,6 +57,7 @@ public class editRegion extends javax.swing.JPanel {
 
         descriptionField.setColumns(18);
         descriptionField.setRows(4);
+        descriptionField.setToolTipText("Enter a description for the region");
         jScrollPane1.setViewportView(descriptionField);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

@@ -123,6 +123,7 @@
           <Properties>
             <Property name="columns" type="int" value="18"/>
             <Property name="rows" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" value="Enter any notes relating to the plant"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -133,7 +134,7 @@
     <Component class="javax.swing.JButton" name="saveButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Save"/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="toolTipText" type="java.lang.String" value="Press to save changes made to plant"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveButtonActionPerformed"/>
@@ -141,7 +142,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add Plant"/>
+        <Property name="text" type="java.lang.String" value="Edit Plant"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
@@ -150,6 +151,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="sci_nameField">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Enter the scientific name of the plant"/>
+      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
@@ -157,6 +161,7 @@
     <Component class="javax.swing.JButton" name="plantImageChooser">
       <Properties>
         <Property name="text" type="java.lang.String" value="Select image..."/>
+        <Property name="toolTipText" type="java.lang.String" value="Press to select image to upload"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="plantImageChooserMouseClicked"/>
@@ -179,6 +184,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="imageCaption">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Enter a caption (if added a image)"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imageCaptionActionPerformed"/>
       </Events>
@@ -187,6 +195,9 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cultivarField">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Enter the cultivar of the plant"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cultivarFieldActionPerformed"/>
       </Events>
@@ -200,6 +211,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="com_nameField">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Enter the common name of the plant"/>
+      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>

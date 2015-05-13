@@ -53,21 +53,25 @@ public class editPlant extends javax.swing.JPanel {
 
         notesField.setColumns(18);
         notesField.setRows(4);
+        notesField.setToolTipText("Enter any notes relating to the plant");
         jScrollPane1.setViewportView(notesField);
 
         saveButton.setText("Save");
-        saveButton.setToolTipText("");
+        saveButton.setToolTipText("Press to save changes made to plant");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Add Plant");
+        jLabel1.setText("Edit Plant");
 
         jLabel6.setText("Image");
 
+        sci_nameField.setToolTipText("Enter the scientific name of the plant");
+
         plantImageChooser.setText("Select image...");
+        plantImageChooser.setToolTipText("Press to select image to upload");
         plantImageChooser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 plantImageChooserMouseClicked(evt);
@@ -85,12 +89,14 @@ public class editPlant extends javax.swing.JPanel {
 
         jLabel3.setText("Common Name");
 
+        imageCaption.setToolTipText("Enter a caption (if added a image)");
         imageCaption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imageCaptionActionPerformed(evt);
             }
         });
 
+        cultivarField.setToolTipText("Enter the cultivar of the plant");
         cultivarField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cultivarFieldActionPerformed(evt);
@@ -98,6 +104,8 @@ public class editPlant extends javax.swing.JPanel {
         });
 
         jLabel4.setText("Cultivar");
+
+        com_nameField.setToolTipText("Enter the common name of the plant");
 
         jLabel5.setText("Notes");
 

@@ -72,6 +72,7 @@ public class editSpecimen extends javax.swing.JPanel {
 
         notesTextArea.setColumns(20);
         notesTextArea.setRows(5);
+        notesTextArea.setToolTipText("Enter any notes relating to the specimen");
         jScrollPane1.setViewportView(notesTextArea);
 
         plantComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +82,7 @@ public class editSpecimen extends javax.swing.JPanel {
         });
 
         latField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#000.000000"))));
+        latField.setToolTipText("Enter the latitude of the specimen");
         latField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 latFieldActionPerformed(evt);
@@ -88,8 +90,9 @@ public class editSpecimen extends javax.swing.JPanel {
         });
 
         longField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#000.000000"))));
+        longField.setToolTipText("Enter the longitude of the specimen");
 
-        jLabel1.setText("Add Specimen");
+        jLabel1.setText("Edit Specimen");
 
         jLabel2.setText("Plant");
 
@@ -100,6 +103,7 @@ public class editSpecimen extends javax.swing.JPanel {
         jLabel6.setText("Region");
 
         saveButton.setText("Save");
+        saveButton.setToolTipText("Press to save changes to the specimen");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
