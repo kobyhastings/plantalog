@@ -24,14 +24,6 @@ public class DBC {
      * Sets up connection and statement
      */
     public static void connect(){
-        
-        String hostname = "107.170.143.74";
-        String username = "plantalog";
-        String password = "plantalog123!";
-        String database = "plantalog";
-        
-        String jdbcDriver = "com.mysql.jdbc.Driver";  //"oracle.jdbc.driver.OracleDriver";
-        String jdbcUrl = "jdbc:mysql://"+hostname+"/"+database+"?username="+username+"&password="+password;  //"jdbc:oracle:thin:@//csshrpt.eku.edu:1521/cscdb";
         // URL for the database including the protocol (jdbc), the vendor 
         //(oracle), the driver (thin), the server (csshrpt.eku.edu), and 
         //the port number (1521)

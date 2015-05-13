@@ -1,0 +1,1 @@
+call sqlplus mikulcik2015/8213@csshrpt.eku.edu/cscdb < create_tables.sql
