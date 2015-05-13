@@ -86,6 +86,7 @@ public class MainFrame extends javax.swing.JFrame {
         addPlant = new plantalog.addPlant();
         addSpecimen = new plantalog.addSpecimen();
         editRegion = new plantalog.editRegion();
+        editSpecimen = new plantalog.editSpecimen();
         header = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         greeting = new javax.swing.JLabel();
@@ -482,7 +483,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(editSpecimenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
                 .addComponent(deleteSpecimenButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
@@ -630,6 +631,7 @@ public class MainFrame extends javax.swing.JFrame {
         cards.add(addPlant, "addPlant");
         cards.add(addSpecimen, "addSpecimen");
         cards.add(editRegion, "editRegion");
+        cards.add(editSpecimen, "editSpecimen");
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
 
@@ -912,7 +914,6 @@ public class MainFrame extends javax.swing.JFrame {
     private void editRegionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editRegionButtonActionPerformed
         setCard("editRegion");
         SpecimenRegion region = (SpecimenRegion)this.regionSearchResults.getSelectedValue();
-        editRegion.region_nameField.setText(region.region_name);
         editRegion.descriptionField.setText(region.description);
     }//GEN-LAST:event_editRegionButtonActionPerformed
 
@@ -925,7 +926,9 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_deletePlantButtonActionPerformed
 
     private void editSpecimenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSpecimenButtonActionPerformed
-        // TODO add your handling code here:
+        Specimen specimen = (Specimen)this.specimenSearchResults.getSelectedValue();
+        editSpecimen.setValues(specimen);
+        setCard("editSpecimen");
     }//GEN-LAST:event_editSpecimenButtonActionPerformed
 
     private void deleteSpecimenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSpecimenButtonActionPerformed
@@ -1064,6 +1067,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton editPlantButton;
     private plantalog.editRegion editRegion;
     private javax.swing.JButton editRegionButton;
+    private plantalog.editSpecimen editSpecimen;
     private javax.swing.JButton editSpecimenButton;
     private javax.swing.JLabel greeting;
     private javax.swing.JPanel header;

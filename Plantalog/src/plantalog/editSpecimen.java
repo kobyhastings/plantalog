@@ -3,26 +3,48 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package plantalog;
 
+import java.util.ArrayList;
 import plantalog.models.Plant;
 import plantalog.models.Specimen;
 import plantalog.models.SpecimenRegion;
 
 /**
  *
- * @author Simon
+ * @author kobyhastings
  */
-public class addSpecimen extends javax.swing.JPanel {
-
+public class editSpecimen extends javax.swing.JPanel {
+    
+    protected Specimen selected_specimen;
+    
     /**
-     * Creates new form addSpecimen
+     * Creates new form editSpecimen
      */
-    public addSpecimen() {
+    public editSpecimen() {
         initComponents();
     }
 
+    public void setValues(Specimen specimen) {
+        
+        this.selected_specimen = specimen;
+        
+        // set plant
+        this.plantComboBox.setModel(Plantalog.toComboBoxModel(Plant.getAll()));
+        this.plantComboBox.setSelectedItem(specimen.plant);
+        
+        // set region
+        this.regionComboBox.setModel(Plantalog.toComboBoxModel(SpecimenRegion.getAll()));
+        SpecimenRegion region = (SpecimenRegion)SpecimenRegion.get(specimen.lives_in);
+        this.regionComboBox.setSelectedItem(region);
+        
+        // set latitude, longitude, and notes
+        this.latField.setText("" + specimen.latitude);
+        this.longField.setText("" + specimen.longitude);
+        this.notesTextArea.setText(specimen.notes);
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,6 +54,12 @@ public class addSpecimen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        notesTextArea = new javax.swing.JTextArea();
+        plantComboBox = new javax.swing.JComboBox();
+        latField = new javax.swing.JFormattedTextField();
+        longField = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -39,29 +67,6 @@ public class addSpecimen extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         regionComboBox = new javax.swing.JComboBox();
         saveButton = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        notesTextArea = new javax.swing.JTextArea();
-        plantComboBox = new javax.swing.JComboBox();
-        latField = new javax.swing.JFormattedTextField();
-        longField = new javax.swing.JFormattedTextField();
-
-        jLabel1.setText("Add Specimen");
-
-        jLabel2.setText("Plant");
-
-        jLabel4.setText("Latitude");
-
-        jLabel5.setText("Longitude");
-
-        jLabel6.setText("Region");
-
-        saveButton.setText("Save");
-        saveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveButtonActionPerformed(evt);
-            }
-        });
 
         jLabel7.setText("Notes");
 
@@ -84,6 +89,23 @@ public class addSpecimen extends javax.swing.JPanel {
 
         longField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#000.000000"))));
 
+        jLabel1.setText("Add Specimen");
+
+        jLabel2.setText("Plant");
+
+        jLabel4.setText("Latitude");
+
+        jLabel5.setText("Longitude");
+
+        jLabel6.setText("Region");
+
+        saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,8 +122,8 @@ public class addSpecimen extends javax.swing.JPanel {
                                     .addComponent(jLabel6))
                                 .addGap(24, 24, 24)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(regionComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(plantComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(regionComboBox, 0, 215, Short.MAX_VALUE)
+                                    .addComponent(plantComboBox, 0, 215, Short.MAX_VALUE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
@@ -113,11 +135,11 @@ public class addSpecimen extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(longField)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(saveButton)))
-                        .addGap(208, 208, 208))
+                        .addGap(24, 24, 24))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -149,43 +171,33 @@ public class addSpecimen extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(saveButton)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        if(latField.getText().isEmpty())
-            latField.setText("0");
-        if(longField.getText().isEmpty())
-            longField.setText("0");
-        Specimen.add(
-                (Plant)plantComboBox.getSelectedItem(), 
-                (SpecimenRegion)regionComboBox.getSelectedItem(), 
-                notesTextArea.getText(), 
-                Double.parseDouble(latField.getText()), 
-                Double.parseDouble(longField.getText()));
-        plantComboBox.setSelectedItem(null);
-        regionComboBox.setSelectedItem(null);
-        notesTextArea.setText("");
-        latField.setText("");
-        longField.setText("");
-        
-        Plantalog.main.setCard("search");
-        Plantalog.main.refreshSpecimenSearchPane();
-    }//GEN-LAST:event_saveButtonActionPerformed
 
     private void latFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_latFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_latFieldActionPerformed
 
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+
+        Specimen.update(
+                this.selected_specimen.specimen_id,
+                (SpecimenRegion)this.regionComboBox.getSelectedItem(),
+                (Plant)this.plantComboBox.getSelectedItem(),
+                this.latField.getText(),
+                this.longField.getText(),
+                this.notesTextArea.getText()
+            );
+
+        Plantalog.main.setCard("search");
+        Plantalog.main.refreshSpecimenSearchPane();
+    }//GEN-LAST:event_saveButtonActionPerformed
+
     private void plantComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plantComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_plantComboBoxActionPerformed
 
-    public void refresh(){
-        plantComboBox.setModel(Plantalog.toComboBoxModel(Plant.getAll()));
-        regionComboBox.setModel(Plantalog.toComboBoxModel(SpecimenRegion.getAll()));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

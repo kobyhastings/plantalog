@@ -126,4 +126,14 @@ public class Specimen extends Model {
             return a.get(0);
         return 0;
     }
+    
+    public static void update(String id, SpecimenRegion region, Plant plant, String latitude, String longitude, String notes) {
+        DBC.execute("update Specimen set "
+                + "lives_in=\"" + region.region_name + "\", "
+                + "plant_id=\"" + plant.plant_id + "\", "
+                + "latitude=" + latitude + ", "
+                + "longitude=" + longitude + ", "
+                + "notes=\"" + notes + "\" "
+                + "where specimen_id=\"" + id + "\" ");
+    }
 }

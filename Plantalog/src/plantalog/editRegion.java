@@ -42,8 +42,6 @@ public class editRegion extends javax.swing.JPanel {
         saveButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         descriptionField = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
-        region_nameField = new javax.swing.JTextField();
 
         jLabel1.setText("Edit Region");
 
@@ -61,8 +59,6 @@ public class editRegion extends javax.swing.JPanel {
         descriptionField.setRows(4);
         jScrollPane1.setViewportView(descriptionField);
 
-        jLabel2.setText("Region Name");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,13 +73,9 @@ public class editRegion extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(saveButton)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5))
-                                .addGap(46, 46, 46)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(region_nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(jLabel5)
+                                .addGap(56, 56, 56)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(166, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -91,15 +83,12 @@ public class editRegion extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
+                        .addGap(46, 46, 46)
                         .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(region_nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(58, 58, 58)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                 .addComponent(saveButton)
@@ -110,11 +99,8 @@ public class editRegion extends javax.swing.JPanel {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         if(Plantalog.main != null){
             SpecimenRegion r = (SpecimenRegion)Plantalog.main.regionSearchResults.getSelectedValue();
-            ArrayList<SpecimenRegion> region = SpecimenRegion.getRegions(region_nameField.getText());
-            if(!"".equals(region_nameField.getText()) && region.isEmpty()) {
-                SpecimenRegion.update(r.region_name, region_nameField.getText(), descriptionField.getText());
-            }
-            region_nameField.setText("");
+            ArrayList<SpecimenRegion> region = SpecimenRegion.getRegions(r.region_name);
+            SpecimenRegion.update(descriptionField.getText(), r.region_name);
             descriptionField.setText("");
 
             Plantalog.main.setCard("search");
@@ -126,10 +112,8 @@ public class editRegion extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextArea descriptionField;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextField region_nameField;
     private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
 }
