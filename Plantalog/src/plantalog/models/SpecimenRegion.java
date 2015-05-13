@@ -86,4 +86,7 @@ public class SpecimenRegion extends Model {
     public static void update(String newDesc, String region){
         DBC.execute("update SpecimenRegion set description = \"" + newDesc + "\" where region_name = \"" + region + "\" ");
     }
+    public static void delete(SpecimenRegion r){
+        DBC.execute("DELETE FROM SpecimenRegion WHERE region_id=\"" + r.region_name + "\""); 
+    }
 }

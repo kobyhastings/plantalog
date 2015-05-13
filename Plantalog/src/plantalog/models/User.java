@@ -97,4 +97,7 @@ public class User extends Model{
         DBC.execute("insert into Users (user_id, name, password, email, user_type) values (\""+
                 id + "\", \""+username + "\", \""+ password + "\", \"" + email  + "\", \"" + user_type + "\")");
     }
+    public static void delete(User u){
+        DBC.execute("DELETE FROM User WHERE user_id=\"" + u.user_id + "\""); 
+    }
 }
