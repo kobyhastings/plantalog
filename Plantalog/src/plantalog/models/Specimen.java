@@ -58,7 +58,7 @@ public class Specimen extends Model {
     @Override
     public String toString(){
         if(plant != null)
-            return plant.sci_name + "'"+plant.cultivar+"' " + lives_in;
+            return lives_in + " " + plant ;
         else
             return lives_in;
     }

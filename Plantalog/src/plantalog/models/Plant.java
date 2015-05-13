@@ -29,7 +29,7 @@ public class Plant extends Model {
 
     @Override
     public String toString(){
-        return "Plant(" + plant_id + ", " + sci_name + ", " + cultivar + ")";
+        return sci_name + " '" + cultivar + "'";
     }    
 
     @Override
