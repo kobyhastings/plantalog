@@ -24,9 +24,21 @@ public class DBC {
      * Sets up connection and statement
      */
     public static void connect(){
-        // URL for the database including the protocol (jdbc), the vendor 
-        //(oracle), the driver (thin), the server (csshrpt.eku.edu), and 
-        //the port number (1521)
+        String hostname, username, password, database, jdbcDriver, protocol, jdbcUrl;
+        if(true){//use mysql
+            hostname = "107.170.143.74";
+            username = "plantalog";
+            password = "plantalog123!";
+            database = "plantalog";
+            jdbcDriver = "com.mysql.jdbc.Driver";
+            protocol = "jdbc:mysql:";
+            jdbcUrl = protocol + "//"+hostname+"/"+database+"?username="+username+"&password="+password;  
+        }else{//use oracle
+            username = "mikulcik2015";
+            password = "8213";
+            jdbcDriver = "oracle.jdbc.driver.OracleDriver";
+            jdbcUrl = "jdbc:oracle:thin:@//csshrpt.eku.edu:1521/cscdb";
+        }
 
         try{
             Class.forName(jdbcDriver);
