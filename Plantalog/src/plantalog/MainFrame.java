@@ -41,7 +41,6 @@ public class MainFrame extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
         registerButton = new javax.swing.JButton();
         addUser = new plantalog.addUser();
-        registerNewUser = new plantalog.registerNewUser();
         addRegion = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         addRegionNameTextField = new javax.swing.JTextField();
@@ -85,6 +84,7 @@ public class MainFrame extends javax.swing.JFrame {
         numViews = new javax.swing.JLabel();
         addPlant = new plantalog.addPlant();
         addSpecimen = new plantalog.addSpecimen();
+        editRegion = new javax.swing.JPanel();
         header = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         greeting = new javax.swing.JLabel();
@@ -155,8 +155,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(usernameField)
                             .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-
-                .addContainerGap(287, Short.MAX_VALUE))
+                .addContainerGap(480, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +177,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         cards.add(loginPanel, "login");
         cards.add(addUser, "addUser");
-        cards.add(registerNewUser, "registerNewUser");
 
         jLabel1.setText("Add Region");
 
@@ -335,7 +333,6 @@ public class MainFrame extends javax.swing.JFrame {
         editRegionButton.setMaximumSize(new java.awt.Dimension(148, 29));
         editRegionButton.setMinimumSize(new java.awt.Dimension(148, 29));
         editRegionButton.setPreferredSize(new java.awt.Dimension(131, 29));
-        editRegionButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
         editRegionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editRegionButtonActionPerformed(evt);
@@ -394,7 +391,6 @@ public class MainFrame extends javax.swing.JFrame {
         editPlantButton.setMaximumSize(new java.awt.Dimension(148, 29));
         editPlantButton.setMinimumSize(new java.awt.Dimension(148, 29));
         editPlantButton.setPreferredSize(new java.awt.Dimension(131, 29));
-        editPlantButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
         editPlantButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editPlantButtonActionPerformed(evt);
@@ -448,7 +444,6 @@ public class MainFrame extends javax.swing.JFrame {
         editSpecimenButton.setMaximumSize(new java.awt.Dimension(148, 29));
         editSpecimenButton.setMinimumSize(new java.awt.Dimension(148, 29));
         editSpecimenButton.setPreferredSize(new java.awt.Dimension(131, 29));
-        editSpecimenButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
         editSpecimenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editSpecimenButtonActionPerformed(evt);
@@ -632,6 +627,19 @@ public class MainFrame extends javax.swing.JFrame {
         addPlant.setName(""); // NOI18N
         cards.add(addPlant, "addPlant");
         cards.add(addSpecimen, "addSpecimen");
+
+        javax.swing.GroupLayout editRegionLayout = new javax.swing.GroupLayout(editRegion);
+        editRegion.setLayout(editRegionLayout);
+        editRegionLayout.setHorizontalGroup(
+            editRegionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 898, Short.MAX_VALUE)
+        );
+        editRegionLayout.setVerticalGroup(
+            editRegionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 422, Short.MAX_VALUE)
+        );
+
+        cards.add(editRegion, "editRegion");
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
 
@@ -1060,6 +1068,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton deleteRegionButton;
     private javax.swing.JButton deleteSpecimenButton;
     private javax.swing.JButton editPlantButton;
+    private javax.swing.JPanel editRegion;
     private javax.swing.JButton editRegionButton;
     private javax.swing.JButton editSpecimenButton;
     private javax.swing.JLabel greeting;
@@ -1093,7 +1102,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane regionSearchResultsPane;
     private javax.swing.JTextField regionSearchTextField;
     private javax.swing.JButton registerButton;
-    private plantalog.registerNewUser registerNewUser;
     private javax.swing.JButton search;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JLabel specimenActionsLabel;
