@@ -115,6 +115,7 @@ public class Plant extends Model {
         //}
     }
     public static void delete(Plant p){
-        DBC.execute("DELETE FROM Plant WHERE plant_id=\"" + p.plant_id + "\""); 
+        if(p != null)
+            DBC.execute("DELETE FROM Plant WHERE plant_id=\"" + p.plant_id + "\""); 
     }
 }

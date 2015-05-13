@@ -138,6 +138,7 @@ public class Specimen extends Model {
     }
 
     public static void delete(Specimen s){
-        DBC.execute("DELETE FROM Specimen WHERE specimen_id=\"" + s.specimen_id + "\""); 
+        if(s != null)
+            DBC.execute("DELETE FROM Specimen WHERE specimen_id=\"" + s.specimen_id + "\""); 
     }
 }

@@ -908,7 +908,12 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void deleteRegionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteRegionButtonActionPerformed
-        // TODO add your handling code here:
+        
+        SpecimenRegion region = (SpecimenRegion)this.regionSearchResults.getSelectedValue();
+        SpecimenRegion.delete(region);
+        refreshRegionSearchPane();
+        refreshPlantSearchPane();
+        refreshSpecimenSearchPane();
     }//GEN-LAST:event_deleteRegionButtonActionPerformed
 
     private void editRegionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editRegionButtonActionPerformed
@@ -922,7 +927,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_editPlantButtonActionPerformed
 
     private void deletePlantButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePlantButtonActionPerformed
-        // TODO add your handling code here:
+        
+        Plant plant = (Plant)this.plantSearchResults.getSelectedValue();
+        Plant.delete(plant);
+        refreshPlantSearchPane();
+        refreshSpecimenSearchPane();
     }//GEN-LAST:event_deletePlantButtonActionPerformed
 
     private void editSpecimenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSpecimenButtonActionPerformed
@@ -932,7 +941,10 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_editSpecimenButtonActionPerformed
 
     private void deleteSpecimenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSpecimenButtonActionPerformed
-        // TODO add your handling code here:
+        
+        Specimen specimen = (Specimen)this.specimenSearchResults.getSelectedValue();
+        Specimen.delete(specimen);
+        refreshSpecimenSearchPane();
     }//GEN-LAST:event_deleteSpecimenButtonActionPerformed
 
     /**
