@@ -64,10 +64,10 @@ public class Specimen extends Model {
     }
     
     public static Model get(String id) {
-        ArrayList<Specimen> ps = DBC.executeQuery("Select * from Specimen where specimen_id=\""+id+"\"", new Specimen());
+        ArrayList<Specimen> ps = DBC.executeQuery("Select * from Specimen where specimen_id=?", new Specimen(), id);
         if(ps.size() > 0){
             Specimen s = ps.get(0);
-            ArrayList<Plant> plants = (DBC.executeQuery("Select * from Plant where plant_id=\""+s.plant_id+"\"", new Plant()));
+            ArrayList<Plant> plants = (DBC.executeQuery("Select * from Plant where plant_id=?", new Plant(), s.plant_id));
             if(ps.size() > 0)
                 s.plant = plants.get(0);
             return s;
@@ -93,20 +93,20 @@ public class Specimen extends Model {
         ArrayList<Specimen> specimens;
         if(region != null && plant != null)
             specimens = DBC.executeQuery("Select * from Specimen where "+
-                    "lives_in='"+region.region_name+"' and "+
-                    "plant_id='"+plant.plant_id+"'", new Specimen());
+                    "lives_in=? and "+
+                    "plant_id=?", new Specimen(), region.region_name, plant.plant_id);
         else if(region != null)
             specimens = DBC.executeQuery("Select * from Specimen where "+
-                    "lives_in='"+region.region_name+"'", new Specimen());
+                    "lives_in=?", new Specimen(), region.region_name);
         else if(plant != null)
             specimens = DBC.executeQuery("Select * from Specimen where "+
-                    "plant_id='"+plant.plant_id+"'", new Specimen());
+                    "plant_id=?", new Specimen(), plant.plant_id);
         else
             specimens = DBC.executeQuery("Select * from Specimen", new Specimen());
         
         ArrayList<Plant> plants;
         for(Specimen s : specimens){
-            plants = (DBC.executeQuery("Select * from Plant where plant_id=\""+s.plant_id+"\"", new Plant()));
+            plants = (DBC.executeQuery("Select * from Plant where plant_id=?", new Plant(), s.plant_id));
             if(plants.size() > 0)
                 s.plant = plants.get(0);
         }
@@ -117,7 +117,8 @@ public class Specimen extends Model {
         String id = "";
         for(int i = 0; i < 9; i++)
             id += (char)((int)(Math.random()*10) + '0');
-        DBC.execute("insert into Specimen (plant_id, specimen_id, notes, latitude, longitude, lives_in) values (\"" + p.plant_id + "\", \""+ id + "\", \""+ notes + "\", "+ latitude + ", "+ longitude + ", \""+ r.region_name + "\")");
+        DBC.execute("insert into Specimen (plant_id, specimen_id, notes, latitude, longitude, lives_in) values (?, ?, ?, ?, ?, ?)",
+                p.plant_id, id, notes, "" + latitude, "" + longitude, r.region_name);
     }
 
     public int get_num_views(){
@@ -129,12 +130,13 @@ public class Specimen extends Model {
     
     public static void update(String id, SpecimenRegion region, Plant plant, String latitude, String longitude, String notes) {
         DBC.execute("update Specimen set "
-                + "lives_in=\"" + region.region_name + "\", "
-                + "plant_id=\"" + plant.plant_id + "\", "
-                + "latitude=" + latitude + ", "
-                + "longitude=" + longitude + ", "
-                + "notes=\"" + notes + "\" "
-                + "where specimen_id=\"" + id + "\" ");
+                + "lives_in=?, "
+                + "plant_id=?, "
+                + "latitude=?, "
+                + "longitude=?, "
+                + "notes=? "
+                + "where specimen_id=? ", 
+                region.region_name, plant.plant_id, latitude, longitude, notes, id);
     }
 
     public static void delete(Specimen s){

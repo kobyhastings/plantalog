@@ -99,6 +99,7 @@ public class User extends Model{
     }
     public static void delete(User u){
         if(u != null)
-            DBC.execute("DELETE FROM User WHERE user_id=\"" + u.user_id + "\""); 
+            DBC.execute("DELETE FROM User WHERE user_id=?", u.user_id); 
+        
     }
 }

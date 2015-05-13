@@ -49,7 +49,7 @@ public class SpecimenRegion extends Model {
     }
     
     public static Model get(String id) {
-        ArrayList<SpecimenRegion> ps = DBC.executeQuery("Select * from SpecimenRegion where region_name=\""+id+"\"", new SpecimenRegion());
+        ArrayList<SpecimenRegion> ps = DBC.executeQuery("Select * from SpecimenRegion where region_name=?", new SpecimenRegion(), id);
         if(ps.size() > 0){
             SpecimenRegion s = ps.get(0);
             return s;
@@ -75,19 +75,19 @@ public class SpecimenRegion extends Model {
         if(filter.isEmpty())
             regions = DBC.executeQuery("Select * from SpecimenRegion;", new SpecimenRegion());
         else
-            regions = DBC.executeQuery("Select * from SpecimenRegion where region_name LIKE '%"+filter+"%'", new SpecimenRegion());
+            regions = DBC.executeQuery("Select * from SpecimenRegion where region_name LIKE ?", new SpecimenRegion(), "%"+filter+"%");
         return regions;
     }
     
     public static void add(String name, String desc){
-        DBC.execute("insert into SpecimenRegion values (\"" + name + "\", \""+ desc + "\")");
+        DBC.execute("insert into SpecimenRegion values (?, ?)", name, desc);
     }
     
     public static void update(String newDesc, String region){
-        DBC.execute("update SpecimenRegion set description = \"" + newDesc + "\" where region_name = \"" + region + "\" ");
+        DBC.execute("update SpecimenRegion set description = ? where region_name = ? ", newDesc, region);
     }
     public static void delete(SpecimenRegion r){
         if(r != null)
-            DBC.execute("DELETE FROM SpecimenRegion WHERE region_id=\"" + r.region_name + "\""); 
+            DBC.execute("DELETE FROM SpecimenRegion WHERE region_id=?", r.region_name); 
     }
 }

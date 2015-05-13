@@ -115,17 +115,13 @@ public class PlantImage extends Model {
         
         String path = uploadResult.get("public_id") + "." + uploadResult.get("format");
         DBC.execute(
-                "insert into PlantImage values ("
-                        + "\"" + plant_id + "\", "
-                        + "\""+ image_id + "\", "
-                        + "\""+ path + "\", "
-                        + "\""+ caption + "\")"
-        );
+                "insert into PlantImage values ( ?, ?, ?, ?)",
+                plant_id, image_id, path, caption);
         
         return image_id;
     }
     public static void delete(PlantImage p){
         if(p != null)
-            DBC.execute("DELETE FROM PlantImage WHERE image_id=\"" + p.image_id + "\""); 
+            DBC.execute("DELETE FROM PlantImage WHERE image_id=?", p.image_id); 
     }
 }

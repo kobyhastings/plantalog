@@ -90,9 +90,9 @@ public class Plant extends Model {
         else
             plants = DBC.executeQuery(
                     "Select * from Plant where "+
-                    "sci_name LIKE '%"+filter+"%' or "+
-                    "cultivar LIKE '%"+filter+"%' or "+
-                    "com_name LIKE '%"+filter+"%'", new Plant());
+                    "sci_name LIKE ? or "+
+                    "cultivar LIKE ? or "+
+                    "com_name LIKE ?", new Plant(), "%"+filter+"%","%"+filter+"%","%"+filter+"%");
         for(Plant p: plants)
             p.images = DBC.executeQuery("Select * from PlantImage where "+
                 "plant_id = '" + p.plant_id + "'", new PlantImage());
@@ -101,15 +101,17 @@ public class Plant extends Model {
     
     public static String add(String cultivar, String sci_name, String comm_name, String notes){
         String id = PlantalogHelper.generateRandomId();
-        DBC.execute("insert into Plant values (\"" + id + "\", \""+ cultivar + "\", \""+ sci_name + "\", \""+ comm_name + "\", \""+ notes + "\")");
+        DBC.execute("insert into Plant values (?, ?, ?, ?, ?)",
+            id, cultivar, sci_name, comm_name, notes);
         return id;
     }
     
     public static void update(String plant_id, String cultivar, String sci_name, String comm_name, String notes){
-        DBC.execute("update Plant set cultivar = \""+ cultivar + "\", sci_name = \""+ sci_name + "\", com_name = \""+ comm_name + "\", notes = \""+ notes + "\" where plant_id = \"" + plant_id + "\"");
+        DBC.execute("update Plant set cultivar = ?, sci_name = ?, com_name = ?, notes = ? where plant_id = ?",
+            cultivar, sci_name, comm_name, notes, plant_id);
     }
     public static void delete(Plant p){
         if(p != null)
-            DBC.execute("DELETE FROM Plant WHERE plant_id=\"" + p.plant_id + "\""); 
+            DBC.execute("DELETE FROM Plant WHERE plant_id=?", p.plant_id);
     }
 }

@@ -55,23 +55,27 @@ public class DBC {
         }
     }
     
-    public static void execute(String query){
-        Statement s = null;
+    public static void execute(String query, String ... params){
+        PreparedStatement s = null;
         try {
-            s = conn.createStatement();
-            s.execute(query);
+            s = conn.prepareStatement(query);
+            for(int i=1; i <= params.length; i++)
+                s.setString(i, params[i-1]);
+            s.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }finally{
             if(s != null)close(s);
         }
     }
-    public static <T extends Model> ArrayList<T> executeQuery(String query, T modelclass){
-        Statement s = null;
+    public static <T extends Model> ArrayList<T> executeQuery(String query, T modelclass, String ... params){
+        PreparedStatement s = null;
         ResultSet r = null;
         try {
-            s = conn.createStatement();
-            r = s.executeQuery(query);
+            s = conn.prepareStatement(query);
+            for(int i=1; i <= params.length; i++)
+                s.setString(i, params[i-1]);
+            r = s.executeQuery();
             return modelclass.parseResultSet(r);
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -175,37 +179,6 @@ public class DBC {
             }
             catch(Throwable whatever)
             {}
-        }
-    }
-
-    /**
-     * Drops a table form the database
-     * 
-     * Note: Method from class example
-     * 
-     * @param tableName Name of the table to drop
-     */
-    static void dropTable(String tableName)
-    {       
-        ResultSet result = null;
-
-        try
-        {
-            result = stmt.executeQuery("SELECT TABLE_NAME FROM USER_TABLES WHERE TABLE_NAME='" + tableName + "'");
-            while (result.next())
-            {
-                String s = result.getString("TABLE_NAME");
-                if (s.equals(tableName))
-                {
-                    stmt.executeUpdate("DROP TABLE " + tableName);
-                    break;
-                }
-            }
-        }
-        catch(Throwable oops)
-        {
-            oops.printStackTrace();
-            close(result);
         }
     }
 }
