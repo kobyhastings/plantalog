@@ -114,4 +114,7 @@ public class Plant extends Model {
         //    DBC.execute("update SpecimenRegion set region_name = \"" + newName + "\", description = \"" + newDesc + "\" where region_name = \"" + newName + " ");
         //}
     }
+    public static void delete(Plant p){
+        DBC.execute("DELETE FROM Plant WHERE plant_id=\"" + p.plant_id + "\""); 
+    }
 }

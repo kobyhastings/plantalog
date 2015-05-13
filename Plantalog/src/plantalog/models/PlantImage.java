@@ -124,4 +124,7 @@ public class PlantImage extends Model {
         
         return image_id;
     }
+    public static void delete(PlantImage p){
+        DBC.execute("DELETE FROM PlantImage WHERE image_id=\"" + p.image_id + "\""); 
+    }
 }

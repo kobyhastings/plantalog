@@ -126,4 +126,7 @@ public class Specimen extends Model {
             return a.get(0);
         return 0;
     }
+    public static void delete(Specimen s){
+        DBC.execute("DELETE FROM Specimen WHERE specimen_id=\"" + s.specimen_id + "\""); 
+    }
 }
