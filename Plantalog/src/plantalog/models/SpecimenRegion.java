@@ -82,4 +82,8 @@ public class SpecimenRegion extends Model {
     public static void add(String name, String desc){
         DBC.execute("insert into SpecimenRegion values (\"" + name + "\", \""+ desc + "\")");
     }
+    
+    public static void update(String oldName, String newName, String newDesc){
+        DBC.execute("update SpecimenRegion set region_name = \"" + newName + "\", description = \"" + newDesc + "\" where region_name = \"" + oldName + " ");
+    }
 }

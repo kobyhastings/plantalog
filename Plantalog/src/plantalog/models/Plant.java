@@ -104,4 +104,14 @@ public class Plant extends Model {
         DBC.execute("insert into Plant values (\"" + id + "\", \""+ cultivar + "\", \""+ sci_name + "\", \""+ comm_name + "\", \""+ notes + "\")");
         return id;
     }
+    
+    public static void update(String cultivar, String sci_name, String comm_name, String notes){
+        //if("".equals(newName)) {
+        //    DBC.execute("update SpecimenRegion set description = \"" + newDesc + "\" where region_name = \"" + newName + " ");
+        //} else if("".equals(newDesc)) {
+        //    DBC.execute("update SpecimenRegion set region_name = \"" + newName + "\" where region_name = \"" + newName + " ");
+        //} else {
+        //    DBC.execute("update SpecimenRegion set region_name = \"" + newName + "\", description = \"" + newDesc + "\" where region_name = \"" + newName + " ");
+        //}
+    }
 }
