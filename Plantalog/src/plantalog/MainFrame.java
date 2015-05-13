@@ -68,6 +68,7 @@ public class MainFrame extends javax.swing.JFrame {
         ImageListScrollPane = new javax.swing.JScrollPane();
         imagesList = new javax.swing.JList();
         mainImageCaption = new javax.swing.JLabel();
+        numViews = new javax.swing.JLabel();
         addPlant = new plantalog.addPlant();
         addSpecimen = new plantalog.addSpecimen();
         header = new javax.swing.JPanel();
@@ -356,6 +357,8 @@ public class MainFrame extends javax.swing.JFrame {
         mainImageCaption.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         mainImageCaption.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
+        numViews.setToolTipText("");
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -365,7 +368,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(plantNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(specimenName, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(specimenNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(specimenNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numViews, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mainImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -384,6 +388,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(plantNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(specimenNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(numViews, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(0, 11, Short.MAX_VALUE)
@@ -660,6 +666,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.specimenName.setText(s.plant + " " + s.lives_in);
         this.specimenNotes.setText(s.notes);
         this.plantNotes.setText(s.plant.notes);
+        this.numViews.setText("This was viewed: " + s.get_num_views() + " times");
         if(s.plant.images.size() > 0)
             loadImage(mainImage, s.plant.images.get(0));
         else{
@@ -777,6 +784,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel mainImage;
     private javax.swing.JLabel mainImageCaption;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JLabel numViews;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JButton plantFilterButton;

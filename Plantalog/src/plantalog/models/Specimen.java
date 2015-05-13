@@ -119,4 +119,11 @@ public class Specimen extends Model {
             id += (char)((int)(Math.random()*10) + '0');
         DBC.execute("insert into Specimen (plant_id, specimen_id, notes, latitude, longitude, lives_in) values (\"" + p.plant_id + "\", \""+ id + "\", \""+ notes + "\", "+ latitude + ", "+ longitude + ", \""+ r.region_name + "\")");
     }
+
+    public int get_num_views(){
+        ArrayList<Integer> a = DBC.executeAndGet("select count(*) as count from Views where specimen_id=\""+specimen_id+"\"", "count", Integer.class);
+        if(a.size() == 1)
+            return a.get(0);
+        return 0;
+    }
 }

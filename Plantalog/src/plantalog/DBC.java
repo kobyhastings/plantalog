@@ -80,6 +80,28 @@ public class DBC {
         return new ArrayList();
     }
     
+    public static <T> ArrayList<T> executeAndGet(String query, String field, Class<T> type){
+        //System.out.println("executing "+ query);
+        Statement s = null;
+        ResultSet r = null;
+        ArrayList<T> results = new ArrayList();
+        try {
+            s = conn.createStatement();
+            r = s.executeQuery(query);
+            
+            while(r.next()){
+                T val = r.getObject(field, type);
+                results.add(val);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }finally{
+            if(s != null)close(s);
+            if(r != null)close(r);
+        }
+        return results;
+    }
+    
     /**
      * Destroys the connection to the database
      * Call on exit

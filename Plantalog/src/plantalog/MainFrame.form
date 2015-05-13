@@ -454,6 +454,7 @@
                           <Component id="plantNotes" alignment="0" min="-2" pref="282" max="-2" attributes="0"/>
                           <Component id="specimenName" alignment="0" min="-2" pref="303" max="-2" attributes="0"/>
                           <Component id="specimenNotes" alignment="0" min="-2" pref="282" max="-2" attributes="0"/>
+                          <Component id="numViews" min="-2" pref="192" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -477,6 +478,8 @@
                       <Component id="plantNotes" min="-2" pref="109" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="specimenNotes" min="-2" pref="109" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="numViews" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -541,6 +544,11 @@
               <Properties>
                 <Property name="verticalAlignment" type="int" value="1"/>
                 <Property name="verticalTextPosition" type="int" value="1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="numViews">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>
           </SubComponents>
