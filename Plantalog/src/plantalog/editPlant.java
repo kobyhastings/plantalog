@@ -140,7 +140,7 @@ public class editPlant extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(205, 205, 205))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,10 +179,13 @@ public class editPlant extends javax.swing.JPanel {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         if(Plantalog.main != null){
-            String plant_id = Plant.add(cultivarField.getText(), sci_nameField.getText(), com_nameField.getText(), notesField.getText());
+            Plant p = (Plant)Plantalog.main.plantSearchResults.getSelectedValue();
+            Plant.update(p.plant_id, cultivarField.getText(), sci_nameField.getText(), com_nameField.getText(), notesField.getText());
             File image = ImageChooser.getSelectedFile();
             try {
-                PlantImage.add(image, plant_id, imageCaption.getText());
+                if(image != null) {
+                    PlantImage.add(image, p.plant_id, imageCaption.getText());
+                }
             } catch (IOException ex) {
                 Logger.getLogger(addPlant.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -216,9 +219,9 @@ public class editPlant extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField com_nameField;
-    private javax.swing.JTextField cultivarField;
-    private javax.swing.JTextField imageCaption;
+    public javax.swing.JTextField com_nameField;
+    public javax.swing.JTextField cultivarField;
+    public javax.swing.JTextField imageCaption;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -227,9 +230,9 @@ public class editPlant extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea notesField;
+    public javax.swing.JTextArea notesField;
     private javax.swing.JButton plantImageChooser;
     private javax.swing.JButton saveButton;
-    private javax.swing.JTextField sci_nameField;
+    public javax.swing.JTextField sci_nameField;
     // End of variables declaration//GEN-END:variables
 }

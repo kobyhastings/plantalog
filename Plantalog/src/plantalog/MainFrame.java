@@ -90,6 +90,7 @@ public class MainFrame extends javax.swing.JFrame {
         addSpecimen = new plantalog.addSpecimen();
         editRegion = new plantalog.editRegion();
         editSpecimen = new plantalog.editSpecimen();
+        editPlant = new plantalog.editPlant();
         header = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         greeting = new javax.swing.JLabel();
@@ -486,7 +487,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(editSpecimenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
                 .addComponent(deleteSpecimenButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         jLabel4.setText("Region");
@@ -648,6 +649,7 @@ public class MainFrame extends javax.swing.JFrame {
         cards.add(addSpecimen, "addSpecimen");
         cards.add(editRegion, "editRegion");
         cards.add(editSpecimen, "editSpecimen");
+        cards.add(editPlant, "editPlant");
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/plantalog/logo.png"))); // NOI18N
 
@@ -939,7 +941,13 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_editRegionButtonActionPerformed
 
     private void editPlantButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPlantButtonActionPerformed
-        // TODO add your handling code here:
+        setCard("editPlant");
+        Plant plant = (Plant)this.plantSearchResults.getSelectedValue();
+        editPlant.cultivarField.setText(plant.cultivar);
+        editPlant.sci_nameField.setText(plant.sci_name);
+        editPlant.com_nameField.setText(plant.com_name);
+        editPlant.notesField.setText(plant.notes);
+        editPlant.imageCaption.setText(plant.images.get(0).caption);
     }//GEN-LAST:event_editPlantButtonActionPerformed
 
     private void deletePlantButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePlantButtonActionPerformed
@@ -1092,6 +1100,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton deletePlantButton;
     private javax.swing.JButton deleteRegionButton;
     private javax.swing.JButton deleteSpecimenButton;
+    public plantalog.editPlant editPlant;
     private javax.swing.JButton editPlantButton;
     private plantalog.editRegion editRegion;
     private javax.swing.JButton editRegionButton;

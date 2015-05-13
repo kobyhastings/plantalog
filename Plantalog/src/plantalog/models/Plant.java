@@ -105,14 +105,8 @@ public class Plant extends Model {
         return id;
     }
     
-    public static void update(String cultivar, String sci_name, String comm_name, String notes){
-        //if("".equals(newName)) {
-        //    DBC.execute("update SpecimenRegion set description = \"" + newDesc + "\" where region_name = \"" + newName + " ");
-        //} else if("".equals(newDesc)) {
-        //    DBC.execute("update SpecimenRegion set region_name = \"" + newName + "\" where region_name = \"" + newName + " ");
-        //} else {
-        //    DBC.execute("update SpecimenRegion set region_name = \"" + newName + "\", description = \"" + newDesc + "\" where region_name = \"" + newName + " ");
-        //}
+    public static void update(String plant_id, String cultivar, String sci_name, String comm_name, String notes){
+        DBC.execute("update Plant set cultivar = \""+ cultivar + "\", sci_name = \""+ sci_name + "\", comm_name = \""+ comm_name + "\", notes = \""+ notes + "\" where plant_id = \"" + plant_id + "\"");
     }
     public static void delete(Plant p){
         if(p != null)
