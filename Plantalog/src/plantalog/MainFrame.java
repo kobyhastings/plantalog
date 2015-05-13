@@ -39,7 +39,9 @@ public class MainFrame extends javax.swing.JFrame {
         usernameField = new javax.swing.JTextField();
         passwordField = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
+        registerButton = new javax.swing.JButton();
         addUser = new plantalog.addUser();
+        registerNewUser = new plantalog.registerNewUser();
         addRegion = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         addRegionNameTextField = new javax.swing.JTextField();
@@ -111,6 +113,14 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        registerButton.setText("Register");
+        registerButton.setToolTipText("");
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
@@ -118,6 +128,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGap(236, 236, 236)
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(registerButton)
                     .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(loginPanelLayout.createSequentialGroup()
                         .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,7 +141,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(usernameField)
                             .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(307, Short.MAX_VALUE))
+                .addContainerGap(287, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,11 +156,14 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(loginButton)
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(registerButton)
+                .addContainerGap(175, Short.MAX_VALUE))
         );
 
         cards.add(loginPanel, "login");
         cards.add(addUser, "addUser");
+        cards.add(registerNewUser, "registerNewUser");
 
         jLabel1.setText("Add Region");
 
@@ -657,6 +671,10 @@ public class MainFrame extends javax.swing.JFrame {
         setCard("addUser");
     }//GEN-LAST:event_addUserButtonActionPerformed
 
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+        setCard("registerNewUser");
+    }//GEN-LAST:event_registerButtonActionPerformed
+
     /**
      * Load data for a specimen in the main frame
      * 
@@ -796,6 +814,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JList regionSearchResults;
     private javax.swing.JScrollPane regionSearchResultsPane;
     private javax.swing.JTextField regionSearchTextField;
+    private javax.swing.JButton registerButton;
+    private plantalog.registerNewUser registerNewUser;
     private javax.swing.JButton search;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JButton specimenFilterButton;

@@ -74,6 +74,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="236" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="registerButton" min="-2" max="-2" attributes="0"/>
                           <Component id="loginButton" min="-2" pref="69" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -92,7 +93,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="307" max="32767" attributes="0"/>
+                      <EmptySpace pref="287" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -111,7 +112,9 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="loginButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="228" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="registerButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="175" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -149,12 +152,28 @@
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="getRootPane().setDefaultButton(loginButton);"/>
               </AuxValues>
             </Component>
+            <Component class="javax.swing.JButton" name="registerButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Register"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerButtonActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Component class="plantalog.addUser" name="addUser">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="addUser"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="plantalog.registerNewUser" name="registerNewUser">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="registerNewUser"/>
             </Constraint>
           </Constraints>
         </Component>
