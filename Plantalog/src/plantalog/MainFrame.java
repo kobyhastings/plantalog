@@ -41,6 +41,7 @@ public class MainFrame extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
         registerButton = new javax.swing.JButton();
         addUser = new plantalog.addUser();
+        registerNewUser1 = new plantalog.registerNewUser();
         addRegion = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         addRegionNameTextField = new javax.swing.JTextField();
@@ -177,6 +178,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         cards.add(loginPanel, "login");
         cards.add(addUser, "addUser");
+        cards.add(registerNewUser1, "registerNewUser");
 
         jLabel1.setText("Add Region");
 
@@ -366,7 +368,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(regionActionsPanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(regionActionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
             .addGroup(regionActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, regionActionsPanelLayout.createSequentialGroup()
                     .addContainerGap(65, Short.MAX_VALUE)
@@ -430,7 +432,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(editPlantButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deletePlantButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         specimenActionsPanel.setPreferredSize(new java.awt.Dimension(143, 100));
@@ -462,7 +464,7 @@ public class MainFrame extends javax.swing.JFrame {
         specimenActionsPanelLayout.setHorizontalGroup(
             specimenActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(specimenActionsPanelLayout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(specimenActionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(specimenActionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteSpecimenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -480,7 +482,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(editSpecimenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
                 .addComponent(deleteSpecimenButton)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
@@ -512,8 +514,8 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(18, 32, Short.MAX_VALUE)
                         .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(plantActionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(regionActionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(specimenActionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(regionActionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(specimenActionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25))))
         );
 
@@ -539,11 +541,11 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(searchPanelLayout.createSequentialGroup()
-                                .addComponent(regionActionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(regionActionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(plantActionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(specimenActionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(specimenActionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(specimenSearchResultsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
@@ -1104,6 +1106,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane regionSearchResultsPane;
     private javax.swing.JTextField regionSearchTextField;
     private javax.swing.JButton registerButton;
+    private plantalog.registerNewUser registerNewUser1;
     private javax.swing.JButton search;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JLabel specimenActionsLabel;
