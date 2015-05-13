@@ -6,6 +6,13 @@
 
 package plantalog;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import plantalog.models.Plant;
+import plantalog.models.PlantImage;
+
 /**
  *
  * @author Simon
@@ -28,19 +35,201 @@ public class editPlant extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        notesField = new javax.swing.JTextArea();
+        saveButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        sci_nameField = new javax.swing.JTextField();
+        plantImageChooser = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        imageCaption = new javax.swing.JTextField();
+        cultivarField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        com_nameField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+
+        notesField.setColumns(18);
+        notesField.setRows(4);
+        jScrollPane1.setViewportView(notesField);
+
+        saveButton.setText("Save");
+        saveButton.setToolTipText("");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Add Plant");
+
+        jLabel6.setText("Image");
+
+        plantImageChooser.setText("Select image...");
+        plantImageChooser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                plantImageChooserMouseClicked(evt);
+            }
+        });
+        plantImageChooser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plantImageChooserActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Scientific Name");
+
+        jLabel7.setText("Image Caption");
+
+        jLabel3.setText("Common Name");
+
+        imageCaption.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageCaptionActionPerformed(evt);
+            }
+        });
+
+        cultivarField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cultivarFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Cultivar");
+
+        jLabel5.setText("Notes");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(81, 81, 81)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addGap(21, 21, 21)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(com_nameField)
+                                    .addComponent(cultivarField)
+                                    .addComponent(sci_nameField)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(saveButton)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(70, 70, 70)
+                                            .addComponent(plantImageChooser))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(28, 28, 28)
+                                            .addComponent(imageCaption, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sci_nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(cultivarField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(com_nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(plantImageChooser)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(imageCaption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(saveButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        if(Plantalog.main != null){
+            String plant_id = Plant.add(cultivarField.getText(), sci_nameField.getText(), com_nameField.getText(), notesField.getText());
+            File image = ImageChooser.getSelectedFile();
+            try {
+                PlantImage.add(image, plant_id, imageCaption.getText());
+            } catch (IOException ex) {
+                Logger.getLogger(addPlant.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            cultivarField.setText("");
+            sci_nameField.setText("");
+            com_nameField.setText("");
+            notesField.setText("");
+            imageCaption.setText("");
+
+            Plantalog.main.setCard("search");
+            Plantalog.main.refreshPlantSearchPane();
+        }
+
+    }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void plantImageChooserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plantImageChooserMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plantImageChooserMouseClicked
+
+    private void plantImageChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plantImageChooserActionPerformed
+        ImageChooser.showImageChooser(this);
+    }//GEN-LAST:event_plantImageChooserActionPerformed
+
+    private void imageCaptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageCaptionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_imageCaptionActionPerformed
+
+    private void cultivarFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cultivarFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cultivarFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField com_nameField;
+    private javax.swing.JTextField cultivarField;
+    private javax.swing.JTextField imageCaption;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea notesField;
+    private javax.swing.JButton plantImageChooser;
+    private javax.swing.JButton saveButton;
+    private javax.swing.JTextField sci_nameField;
     // End of variables declaration//GEN-END:variables
 }
