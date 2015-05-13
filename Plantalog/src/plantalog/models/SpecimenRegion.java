@@ -88,6 +88,6 @@ public class SpecimenRegion extends Model {
     }
     public static void delete(SpecimenRegion r){
         if(r != null)
-            DBC.execute("DELETE FROM SpecimenRegion WHERE region_id=?", r.region_name); 
+            DBC.execute("DELETE FROM SpecimenRegion WHERE region_name=?", r.region_name); 
     }
 }
