@@ -106,7 +106,7 @@ public class Plant extends Model {
     }
     
     public static void update(String plant_id, String cultivar, String sci_name, String comm_name, String notes){
-        DBC.execute("update Plant set cultivar = \""+ cultivar + "\", sci_name = \""+ sci_name + "\", comm_name = \""+ comm_name + "\", notes = \""+ notes + "\" where plant_id = \"" + plant_id + "\"");
+        DBC.execute("update Plant set cultivar = \""+ cultivar + "\", sci_name = \""+ sci_name + "\", com_name = \""+ comm_name + "\", notes = \""+ notes + "\" where plant_id = \"" + plant_id + "\"");
     }
     public static void delete(Plant p){
         if(p != null)
