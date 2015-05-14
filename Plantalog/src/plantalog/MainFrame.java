@@ -824,6 +824,10 @@ public class MainFrame extends javax.swing.JFrame {
                 addPlantButton.setVisible(true);
                 addSpecimenButton.setVisible(true);
                 addUserButton.setVisible(true);
+            }else{
+                this.regionActionsPanel.setVisible(false);
+                this.plantActionsPanel.setVisible(false);
+                this.specimenActionsPanel.setVisible(false);
             }
             Plantalog.main.setStatus("Logged in " + Plantalog.currentUser.name);
         }else{
