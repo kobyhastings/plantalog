@@ -25,7 +25,7 @@ public class DBC {
      */
     public static void connect(){
         String hostname, username, password, database, jdbcDriver, protocol, jdbcUrl;
-        if(false){//use mysql
+        if(true){//use mysql
             hostname = "107.170.143.74";
             username = "plantalog";
             password = "plantalog123!";
